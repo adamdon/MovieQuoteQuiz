@@ -23,12 +23,18 @@ namespace MovieQuoteQuiz
         public MainWindow()
         {
             InitializeComponent();
+            Controller.SetupQuestions();
+        }
+
+        public void SetRadAnswer1Text(string strText)
+        {
+            radAnswer1.Content = strText;
         }
 
         private void btnTestbutton_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("You have clicked the button");
-            lblTestLable1.Content = "New Text";
+            lblTestLable1.Content = "Game Stated";
         }
 
         private void btnSubmitAnswer_Click(object sender, RoutedEventArgs e)
