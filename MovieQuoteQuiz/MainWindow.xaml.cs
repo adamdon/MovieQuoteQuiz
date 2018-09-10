@@ -20,21 +20,19 @@ namespace MovieQuoteQuiz
     /// </summary>
     public partial class MainWindow : Window
     {
+        
+
         public MainWindow()
         {
+            Database.SetupDefultValues();
             InitializeComponent();
-            Controller.SetupQuestions();
-        }
-
-        public void SetRadAnswer1Text(string strText)
-        {
-            radAnswer1.Content = strText;
+            UpdateAllFields();
         }
 
         private void btnTestbutton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("You have clicked the button");
-            lblTestLable1.Content = "Game Stated";
+            Controller.PopulateFieldsWithQuestion();
+            UpdateAllFields();
         }
 
         private void btnSubmitAnswer_Click(object sender, RoutedEventArgs e)
@@ -48,5 +46,15 @@ namespace MovieQuoteQuiz
                 MessageBox.Show("Sorry, you are wrong");
             }
         }
+
+        private void UpdateAllFields()
+        {
+            lblQuestionNumber.Content = Database.strLblQuestionNumber;
+            lblCurrentQuestion.Content = Database.strLblCurrentQuestion;
+            radAnswer1.Content = Database.strRadAnswer1;
+            radAnswer2.Content = Database.strRadAnswer2;
+            radAnswer3.Content = Database.strRadAnswer3;
+        }
+
     }
 }

@@ -8,15 +8,20 @@ namespace MovieQuoteQuiz
 {
     class Question
     {
-        string strMovieTitle { get; set; }
-        string strQuoteText { get; set; }
-        int intQuestionRef { get; set; }
+        public string strMovieTitle { get; set; }
+        public string strQuoteText { get; set; }
+        public int intQuestionRef { get; set; }
 
         public Question(string strMovieTitleP, string strQuoteTextP, int intQuestionRefP)
         {
             strMovieTitle = strMovieTitleP;
             strQuoteText = strQuoteTextP;
             intQuestionRef = intQuestionRefP;
+        }
+
+        public void TESTTEST()
+        {
+
         }
 
     }
