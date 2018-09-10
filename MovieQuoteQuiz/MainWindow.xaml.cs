@@ -24,5 +24,23 @@ namespace MovieQuoteQuiz
         {
             InitializeComponent();
         }
+
+        private void btnTestbutton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("You have clicked the button");
+            lblTestLable1.Content = "New Text";
+        }
+
+        private void btnSubmitAnswer_Click(object sender, RoutedEventArgs e)
+        {
+            if (radAnswer3.IsChecked == true)
+            {
+                MessageBox.Show("Correct!");
+            }
+            else
+            {
+                MessageBox.Show("Sorry, you are wrong");
+            }
+        }
     }
 }
