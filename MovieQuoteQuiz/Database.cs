@@ -9,9 +9,16 @@ namespace MovieQuoteQuiz
     class Database
     {
         public static List<Question> queListOfQuestions = new List<Question>();
-        public static string strTeststring = "Test text";
 
-        public static string strLblQuestionNumber;
+        public static List<int> intListOfUsedQuestions = new List<int>();
+        public static List<int> intListOfUsedAnswers = new List<int>();
+
+        public static Question queCurrentQuestion;
+
+        public static Question queCurrentWrongAnswer1;
+        public static Question queCurrentWrongAnswer2;
+
+        public static string strLblQuestioRound;
         public static string strLblCurrentQuestion;
 
         public static string strRadAnswer1;
@@ -22,7 +29,7 @@ namespace MovieQuoteQuiz
         {
             SetupQuestions();
 
-            strLblQuestionNumber = "Question 1";
+            strLblQuestioRound = "Question 1";
             strLblCurrentQuestion = "Movie Quote";
 
             strRadAnswer1 = "Answer 1";
@@ -47,7 +54,7 @@ namespace MovieQuoteQuiz
         //public Database()
         //{
         //    //setup defult values
-        //    strLblQuestionNumber = "Question 1";
+        //    strLblQuestioRound = "Question 1";
         //    strLblCurrentQuestion = "Movie Quote";
 
         //    strRadAnswer1 = "Answer 1";

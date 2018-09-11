@@ -49,7 +49,7 @@ namespace MovieQuoteQuiz
 
         private void UpdateAllFields()
         {
-            lblQuestionNumber.Content = Database.strLblQuestionNumber;
+            lblQuestionNumber.Content = Database.strLblQuestioRound;
             lblCurrentQuestion.Content = Database.strLblCurrentQuestion;
             radAnswer1.Content = Database.strRadAnswer1;
             radAnswer2.Content = Database.strRadAnswer2;
