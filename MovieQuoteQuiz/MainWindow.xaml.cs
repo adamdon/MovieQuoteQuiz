@@ -49,12 +49,18 @@ namespace MovieQuoteQuiz
 
         private void UpdateAllFields()
         {
-            lblQuestionNumber.Content = Database.strLblQuestioRound;
+            lblQuestionNumber.Content = Database.strLblQuestioRoundText;
             lblCurrentQuestion.Content = Database.strLblCurrentQuestion;
+            lblStatusBar.Content = Database.strlblStatusBar;
+
             radAnswer1.Content = Database.strRadAnswer1;
             radAnswer2.Content = Database.strRadAnswer2;
             radAnswer3.Content = Database.strRadAnswer3;
         }
 
+        private void btnUpdateStatusBar_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateAllFields();
+        }
     }
 }

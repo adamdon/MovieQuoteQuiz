@@ -28,12 +28,20 @@ namespace MovieQuoteQuiz
             Database.strRadAnswer1 = Database.queCurrentWrongAnswer1.strMovieTitle;
             Database.strRadAnswer2 = Database.queCurrentWrongAnswer2.strMovieTitle;
             Database.strRadAnswer3 = Database.queCurrentQuestion.strMovieTitle;
+
+
+            Database.intListOfUsedAnswers.Clear();
         }
 
         public static int GetRandomQuestionNumber()
         {
-            int intQuestionNumber = 0;
-            intQuestionNumber = ranRandomNumber.Next(0, Database.queListOfQuestions.Count);
+            
+            int intQuestionNumber = ranRandomNumber.Next(0, Database.queListOfQuestions.Count);
+
+            while (Database.intListOfUsedQuestions.Contains(intQuestionNumber))
+            {
+                intQuestionNumber = ranRandomNumber.Next(0, Database.queListOfQuestions.Count);
+            }
 
             return intQuestionNumber;
         }
@@ -42,20 +50,15 @@ namespace MovieQuoteQuiz
         {
             int intAnswernNumber = ranRandomNumber.Next(0, Database.queListOfQuestions.Count);
 
-            for (int index = 0; index < Database.intListOfUsedAnswers.Count; index++)
+            while (Database.intListOfUsedAnswers.Contains(intAnswernNumber))
             {
-                int intCurrentUsedAnswer = Database.intListOfUsedAnswers[index];
-
-                if (!(intAnswernNumber == intCurrentUsedAnswer))
-                {
-                    return intAnswernNumber;
-                }
                 intAnswernNumber = ranRandomNumber.Next(0, Database.queListOfQuestions.Count);
-
             }
 
-          return intAnswernNumber;
+            return intAnswernNumber;
         }
+
+
 
         public static void UpdateQuestionsUsed(int intQuestionUsed)
         {
@@ -65,6 +68,11 @@ namespace MovieQuoteQuiz
         public static void UpdateAnswersUsed(int intAnswerUsed)
         {
             Database.intListOfUsedAnswers.Add(intAnswerUsed);
+        }
+
+        public static void UpdateStatusBar(String strUpdateText)
+        {
+            Database.strlblStatusBar = strUpdateText;
         }
 
 
