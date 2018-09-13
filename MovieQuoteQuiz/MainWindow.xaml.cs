@@ -29,9 +29,9 @@ namespace MovieQuoteQuiz
             UpdateAllFields();
         }
 
-        private void btnTestbutton_Click(object sender, RoutedEventArgs e)
+        private void btnNewGamebutton_Click(object sender, RoutedEventArgs e)
         {
-            Controller.PopulateFieldsWithQuestion();
+            Controller.StartNewGame();
             UpdateAllFields();
         }
 

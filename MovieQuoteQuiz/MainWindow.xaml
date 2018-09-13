@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Label x:Name="lblTestLable1" Content="Click to start" HorizontalAlignment="Left" Margin="100,100,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnTestbutton" Content="Start!" HorizontalAlignment="Left" Margin="200,100,0,0" VerticalAlignment="Top" Width="125" Click="btnTestbutton_Click"/>
+        <Button x:Name="btnTestbutton" Content="Start!" HorizontalAlignment="Left" Margin="200,100,0,0" VerticalAlignment="Top" Width="125" Click="btnNewGamebutton_Click"/>
         <Label x:Name="lblQuestionNumber" Content="Queston 1" HorizontalAlignment="Left" Margin="100,150,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblCurrentQuestion" Content="&quot;We're going to need a bigger boat&quot;" HorizontalAlignment="Left" Margin="100,200,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="radAnswer1" Content="Pirates of the Caribbean" HorizontalAlignment="Left" Margin="100,231,0,0" VerticalAlignment="Top" x:FieldModifier="public" />

@@ -10,6 +10,17 @@ namespace MovieQuoteQuiz
     {
         public static Random ranRandomNumber = new Random();
 
+        public static void StartNewGame()
+        {
+            PopulateFieldsWithQuestion();
+            Database.gamCurrentGame = new Game("Player1", Database.queListOfQuestions.Count);
+        }
+
+        public static void SubmitAnswer()
+        {
+
+        }
+
 
         public static void PopulateFieldsWithQuestion()   //(Question queCurrentQuestion)
         {
@@ -31,6 +42,11 @@ namespace MovieQuoteQuiz
 
 
             Database.intListOfUsedAnswers.Clear();
+        }
+
+        public static void GetSelectedAnswer()
+        {
+
         }
 
         public static int GetRandomQuestionNumber()

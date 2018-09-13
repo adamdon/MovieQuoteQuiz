@@ -18,6 +18,8 @@ namespace MovieQuoteQuiz
         public static Question queCurrentWrongAnswer1;
         public static Question queCurrentWrongAnswer2;
 
+        public static Game gamCurrentGame;
+
         public static int intQuestionRountNumber;
         public static string strLblQuestioRoundText;
         public static string strLblCurrentQuestion;
@@ -33,7 +35,7 @@ namespace MovieQuoteQuiz
 
             intQuestionRountNumber = 1;
 
-            strLblQuestioRoundText = "Question 1";
+            strLblQuestioRoundText = "Question 0";
             strLblCurrentQuestion = "Movie Quote";
             strlblStatusBar = "Status Bar";
 
@@ -44,12 +46,12 @@ namespace MovieQuoteQuiz
 
         public static void SetupQuestions()
         {
-            Question queQuestion1 = new Question("Jaws", "We're Gonna Need a Bigger Boat", 1);
-            Question queQuestion2 = new Question("Star Wars", "Luke, I am Your Father", 2);
-            Question queQuestion3 = new Question("Back to the Future", "Roads? Where we're going, we don't need roads", 3);
-            Question queQuestion4 = new Question("Terminator 2", "Hasta la vista, baby", 4);
-            Question queQuestion5 = new Question("Lord of the Rings", "You shall not pass", 5);
-            Question queQuestion6 = new Question("Toy Story", "To Infinity and Beyond", 6);
+            Question queQuestion1 = new Question("Jaws", "We're Gonna Need a Bigger Boat", 0);
+            Question queQuestion2 = new Question("Star Wars", "Luke, I am Your Father", 1);
+            Question queQuestion3 = new Question("Back to the Future", "Roads? Where we're going, we don't need roads", 2);
+            Question queQuestion4 = new Question("Terminator 2", "Hasta la vista, baby", 3);
+            Question queQuestion5 = new Question("Lord of the Rings", "You shall not pass", 4);
+            Question queQuestion6 = new Question("Toy Story", "To Infinity and Beyond", 5);
 
 
             queListOfQuestions.Add(queQuestion1);
