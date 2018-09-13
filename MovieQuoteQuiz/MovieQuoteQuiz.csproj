@@ -58,6 +58,8 @@
     <Compile Include="Database.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Question.cs" />
+    <Compile Include="Round.cs" />
+    <Compile Include="View.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -9,6 +9,7 @@ namespace MovieQuoteQuiz
     class Database
     {
         public static List<Question> queListOfQuestions = new List<Question>();
+        public static List<Round> rouListOfRounds = new List<Round>();
 
         public static List<int> intListOfUsedQuestions = new List<int>();
         public static List<int> intListOfUsedAnswers = new List<int>();
@@ -20,7 +21,9 @@ namespace MovieQuoteQuiz
 
         public static Game gamCurrentGame;
 
-        public static int intQuestionRountNumber;
+        
+
+        //public static int intQuestionRountNumber;
         public static string strLblQuestioRoundText;
         public static string strLblCurrentQuestion;
         public static string strlblStatusBar;
@@ -33,7 +36,7 @@ namespace MovieQuoteQuiz
         {
             SetupQuestions();
 
-            intQuestionRountNumber = 1;
+            //intQuestionRountNumber = 1;
 
             strLblQuestioRoundText = "Question 0";
             strLblCurrentQuestion = "Movie Quote";
@@ -58,6 +61,8 @@ namespace MovieQuoteQuiz
             queListOfQuestions.Add(queQuestion2);
             queListOfQuestions.Add(queQuestion3);
             queListOfQuestions.Add(queQuestion4);
+            queListOfQuestions.Add(queQuestion5);
+            queListOfQuestions.Add(queQuestion6);
         }
 
 

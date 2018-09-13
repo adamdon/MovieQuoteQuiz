@@ -12,8 +12,10 @@ namespace MovieQuoteQuiz
 
         public static void StartNewGame()
         {
-            PopulateFieldsWithQuestion();
+            //PopulateRoundWithQuestion();
             Database.gamCurrentGame = new Game("Player1", Database.queListOfQuestions.Count);
+            Database.gamCurrentGame.SetupRounds();
+            Database.gamCurrentGame.PopulateViewWithRound();
         }
 
         public static void SubmitAnswer()
@@ -22,7 +24,7 @@ namespace MovieQuoteQuiz
         }
 
 
-        public static void PopulateFieldsWithQuestion()   //(Question queCurrentQuestion)
+        public static void PopulateRoundWithQuestion()   //(Question queCurrentQuestion)
         {
             Database.queCurrentQuestion = Database.queListOfQuestions[GetRandomQuestionNumber()];
             UpdateQuestionsUsed(Database.queListOfQuestions.IndexOf(Database.queCurrentQuestion));
@@ -44,10 +46,6 @@ namespace MovieQuoteQuiz
             Database.intListOfUsedAnswers.Clear();
         }
 
-        public static void GetSelectedAnswer()
-        {
-
-        }
 
         public static int GetRandomQuestionNumber()
         {
@@ -89,6 +87,12 @@ namespace MovieQuoteQuiz
         public static void UpdateStatusBar(String strUpdateText)
         {
             Database.strlblStatusBar = strUpdateText;
+        }
+
+
+        public static void GetSelectedAnswer()
+        {
+
         }
 
 
