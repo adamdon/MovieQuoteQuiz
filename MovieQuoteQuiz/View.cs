@@ -16,5 +16,9 @@ namespace MovieQuoteQuiz
         public static string strRadAnswer2 = "Answer 2";
         public static string strRadAnswer3 = "Answer 3";
 
+        public static void UpdateStatusBar(int intTotalPoints, string strMessage)
+        {
+            strlblStatusBar = "Points: " + intTotalPoints + " - " + strMessage;
+        }
     }
 }

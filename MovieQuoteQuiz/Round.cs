@@ -15,13 +15,24 @@ namespace MovieQuoteQuiz
 
         public int intRoundNumber { get; set; }
 
-        public Round(Question queCurrentQuestionP, Question queCurrentWrongAnswer1P, Question queCurrentWrongAnswer2P, int intRoundNumberP)
+        public int intSelectedRadio { get; set; }
+
+        public int intCorrectRadio { get; set; }
+        public int intIncorrectRadio1 { get; set; }
+        public int intIncorrectRadio2 { get; set; }
+
+
+        public Round(Question queCurrentQuestionP, Question queCurrentWrongAnswer1P, Question queCurrentWrongAnswer2P, int intCorrectRadioP, int intIncorrectRadio1P, int intIncorrectRadio2P, int intRoundNumberP)
         {
             queCurrentQuestion = queCurrentQuestionP;
             queCurrentWrongAnswer1 = queCurrentWrongAnswer1P;
             queCurrentWrongAnswer2 = queCurrentWrongAnswer2P;
-            intRoundNumber = intRoundNumberP;
+            
+            intCorrectRadio = intCorrectRadioP;
+            intIncorrectRadio1 = intIncorrectRadio1P;
+            intIncorrectRadio2 = intIncorrectRadio2P;
 
+            intRoundNumber = intRoundNumberP;
         }
 
     }

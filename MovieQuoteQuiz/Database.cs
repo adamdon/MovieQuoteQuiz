@@ -9,15 +9,11 @@ namespace MovieQuoteQuiz
     class Database
     {
         public static List<Question> queListOfQuestions = new List<Question>();
-        public static List<Round> rouListOfRounds = new List<Round>();
+        //public static List<Round> rouListOfRounds = new List<Round>();
 
-        public static List<int> intListOfUsedQuestions = new List<int>();
-        public static List<int> intListOfUsedAnswers = new List<int>();
+        //public static List<int> intListOfUsedQuestions = new List<int>();
+        //public static List<int> intListOfUsedAnswers = new List<int>();
 
-        public static Question queCurrentQuestion;
-
-        public static Question queCurrentWrongAnswer1;
-        public static Question queCurrentWrongAnswer2;
 
         public static Game gamCurrentGame;
 

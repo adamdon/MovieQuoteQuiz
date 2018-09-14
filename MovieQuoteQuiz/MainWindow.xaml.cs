@@ -26,28 +26,33 @@ namespace MovieQuoteQuiz
         {
             Database.SetupDefultValues();
             InitializeComponent();
-            UpdateAllFields();
+            PopulateFieldsWithView();
         }
 
         private void btnNewGamebutton_Click(object sender, RoutedEventArgs e)
         {
             Controller.StartNewGame();
-            UpdateAllFields();
+            PopulateFieldsWithView();
         }
 
         private void btnSubmitAnswer_Click(object sender, RoutedEventArgs e)
         {
-            if (radAnswer3.IsChecked == true)
+            if (radAnswer1.IsChecked == true)
             {
-                MessageBox.Show("Correct!");
+                Controller.SubmitAnswer(1); //MessageBox.Show("Correct!");
             }
-            else
+            else if (radAnswer2.IsChecked == true)
             {
-                MessageBox.Show("Sorry, you are wrong");
+                Controller.SubmitAnswer(2);
             }
+            else if (radAnswer3.IsChecked == true)
+            {
+                Controller.SubmitAnswer(3);
+            }
+            PopulateFieldsWithView();
         }
 
-        private void UpdateAllFields()
+        private void PopulateFieldsWithView()
         {
             lblQuestionNumber.Content = View.strLblQuestioRoundText;
             lblCurrentQuestion.Content = View.strLblCurrentQuestion;
@@ -60,7 +65,7 @@ namespace MovieQuoteQuiz
 
         private void btnUpdateStatusBar_Click(object sender, RoutedEventArgs e)
         {
-            UpdateAllFields();
+            PopulateFieldsWithView();
         }
     }
 }
