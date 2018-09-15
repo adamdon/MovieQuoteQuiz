@@ -33,10 +33,12 @@ namespace MovieQuoteQuiz
             intListOfUsedQuestions = new List<int>();
             intListOfUsedAnswers = new List<int>();
             intListOfUsedRadioPositions = new List<int>();
+
         }
 
         public void SubmitAnswer(int intSelectedRadio)
         {
+          
             if (intSelectedRadio == rouListOfRounds[intRoundCurrent].intCorrectRadio)
             {
                 intCorrectQuestions = intCorrectQuestions + 1;
@@ -48,9 +50,26 @@ namespace MovieQuoteQuiz
                 intTotalPoints = intTotalPoints - 5;
                 View.UpdateStatusBar(intTotalPoints, "Wrong");
             }
-            intRoundCurrent = intRoundCurrent + 1;
+
+            if (intRoundCurrent < (intRoundsTotal - 1))
+            {
+                intRoundCurrent = intRoundCurrent + 1;
+            }
+            else
+            {
+                
+                EndGame();
+            }
+                
+
         }
 
+
+        public void EndGame()
+        {
+            View.UpdateStatusBar(intTotalPoints, "Game End!");
+            View.isbtnSubmitAnswerActive = false;
+        }
 
 
 

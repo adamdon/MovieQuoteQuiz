@@ -24,7 +24,8 @@ namespace MovieQuoteQuiz
 
         public MainWindow()
         {
-            Database.SetupDefultValues();
+            Database.SetupQuestions();
+            View.SetupDefultValues();
             InitializeComponent();
             PopulateFieldsWithView();
         }
@@ -61,6 +62,8 @@ namespace MovieQuoteQuiz
             radAnswer1.Content = View.strRadAnswer1;
             radAnswer2.Content = View.strRadAnswer2;
             radAnswer3.Content = View.strRadAnswer3;
+
+            btnSubmitAnswer.IsEnabled = View.isbtnSubmitAnswerActive;
         }
 
         private void btnUpdateStatusBar_Click(object sender, RoutedEventArgs e)
