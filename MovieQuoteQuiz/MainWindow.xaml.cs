@@ -50,6 +50,7 @@ namespace MovieQuoteQuiz
             {
                 Controller.SubmitAnswer(3);
             }
+
             PopulateFieldsWithView();
         }
 
@@ -63,7 +64,12 @@ namespace MovieQuoteQuiz
             radAnswer2.Content = View.strRadAnswer2;
             radAnswer3.Content = View.strRadAnswer3;
 
+            radAnswer1.IsChecked = View.isRadAnswer1Selected;
+            radAnswer2.IsChecked = View.isRadAnswer2Selected;
+            radAnswer3.IsChecked = View.isRadAnswer3Selected;
+
             btnSubmitAnswer.IsEnabled = View.isbtnSubmitAnswerActive;
+            btnTestbutton.IsEnabled = View.isbtnNewGamebuttonActive;
         }
 
         private void btnUpdateStatusBar_Click(object sender, RoutedEventArgs e)

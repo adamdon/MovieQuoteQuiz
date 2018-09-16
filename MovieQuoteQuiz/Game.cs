@@ -14,7 +14,7 @@ namespace MovieQuoteQuiz
         public static List<int> intListOfUsedAnswers; // = new List<int>();
         public static List<int> intListOfUsedRadioPositions;
 
-        public static List<Round> rouListOfRounds = new List<Round>();
+        public static List<Round> rouListOfRounds;
 
         public static string strPlayerName;
         public static int intRoundsTotal;
@@ -30,6 +30,7 @@ namespace MovieQuoteQuiz
             intCorrectQuestions = 0;
             intTotalPoints = 100;
 
+            rouListOfRounds = new List<Round>();
             intListOfUsedQuestions = new List<int>();
             intListOfUsedAnswers = new List<int>();
             intListOfUsedRadioPositions = new List<int>();
@@ -44,11 +45,13 @@ namespace MovieQuoteQuiz
                 intCorrectQuestions = intCorrectQuestions + 1;
                 intTotalPoints = intTotalPoints + 10;
                 View.UpdateStatusBar(intTotalPoints, "Correct!");
+                PopulateViewWithRound();
             }
             else
             {
                 intTotalPoints = intTotalPoints - 5;
                 View.UpdateStatusBar(intTotalPoints, "Wrong");
+                PopulateViewWithRound();
             }
 
             if (intRoundCurrent < (intRoundsTotal - 1))
@@ -56,8 +59,7 @@ namespace MovieQuoteQuiz
                 intRoundCurrent = intRoundCurrent + 1;
             }
             else
-            {
-                
+            {  
                 EndGame();
             }
                 
@@ -69,6 +71,8 @@ namespace MovieQuoteQuiz
         {
             View.UpdateStatusBar(intTotalPoints, "Game End!");
             View.isbtnSubmitAnswerActive = false;
+            View.isbtnNewGamebuttonActive = true;
+            View.SetupDefultValues();
         }
 
 
@@ -103,6 +107,7 @@ namespace MovieQuoteQuiz
                 intListOfUsedRadioPositions.Clear();
                 intListOfUsedAnswers.Clear();
             }
+            View.UpdateStatusBar(intTotalPoints, ("New game setup with " + intRoundsTotal + " rounds"));
           
         }
 

@@ -12,10 +12,11 @@ namespace MovieQuoteQuiz
 
         public static void StartNewGame()
         {
-            //PopulateRoundWithQuestion();
             Database.gamCurrentGame = new Game("Player1", Database.queListOfQuestions.Count);
             Database.gamCurrentGame.SetupRounds();
             Database.gamCurrentGame.PopulateViewWithRound();
+            View.isbtnNewGamebuttonActive = false;
+            View.isbtnSubmitAnswerActive = true;
         }
 
         public static void SubmitAnswer(int intSelectedRadio)
