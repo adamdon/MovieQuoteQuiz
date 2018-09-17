@@ -8,16 +8,30 @@
         mc:Ignorable="d"
         
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+
+    <Window.Resources>
+
+        <Style x:Key = "myLabelStyle" TargetType="Label">
+            <Setter Property = "Height" Value = "30"/>
+            <Setter Property = "Width" Value = "80"/>
+            <Setter Property = "Foreground" Value = "Blue"/>
+            <Setter Property = "FontSize" Value = "12"/>
+            <Setter Property = "Margin" Value = "10"/>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid Background="#000000">
+        <!-- <Grid Background="#000000"> activate for blue gb -->
         <Label x:Name="lblTestLable1" Content="Click to start" HorizontalAlignment="Left" Margin="100,100,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btnTestbutton" Content="Start!" HorizontalAlignment="Left" Margin="200,100,0,0" VerticalAlignment="Top" Width="125" Click="btnNewGamebutton_Click"/>
-        <Label x:Name="lblQuestionNumber" Content="Question 0" HorizontalAlignment="Left" Margin="100,150,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblCurrentQuestion" Content="Movie Quote" HorizontalAlignment="Left" Margin="100,200,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="radAnswer1" Content="Answer 1" HorizontalAlignment="Left" Margin="100,231,0,0" VerticalAlignment="Top" x:FieldModifier="public" />
-        <RadioButton x:Name="radAnswer2" Content="Answer 2" HorizontalAlignment="Left" Margin="100,251,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="radAnswer3" Content="Answer 3" HorizontalAlignment="Left" Margin="100,270,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnSubmitAnswer" Content="Submit Answer" HorizontalAlignment="Left" Margin="100,290,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="-1.813,-0.333" Click="btnSubmitAnswer_Click"/>
+        <Label x:Name="lblQuestionNumber" Content="Question 0" HorizontalAlignment="Left" Margin="119,206,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblCurrentQuestion" Content="Movie Quote" HorizontalAlignment="Left" Margin="119,256,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="radAnswer1" Content="Answer 1" HorizontalAlignment="Left" Margin="119,287,0,0" VerticalAlignment="Top" x:FieldModifier="public" />
+        <RadioButton x:Name="radAnswer2" Content="Answer 2" HorizontalAlignment="Left" Margin="119,307,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="radAnswer3" Content="Answer 3" HorizontalAlignment="Left" Margin="119,326,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnSubmitAnswer" Content="Submit Answer" HorizontalAlignment="Left" Margin="119,346,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="-1.813,-0.333" Click="btnSubmitAnswer_Click"/>
         <Label x:Name="lblStatusBar" Content="Status Bar" HorizontalAlignment="Left" Margin="455,290,0,0" VerticalAlignment="Top" Width="316"/>
-
     </Grid>
+
 </Controls:MetroWindow>
