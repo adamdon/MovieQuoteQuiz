@@ -1,10 +1,12 @@
-﻿<Window x:Class="MovieQuoteQuiz.MainWindow"
+﻿<Controls:MetroWindow x:Class="MovieQuoteQuiz.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:MovieQuoteQuiz"
         mc:Ignorable="d"
+        
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Label x:Name="lblTestLable1" Content="Click to start" HorizontalAlignment="Left" Margin="100,100,0,0" VerticalAlignment="Top"/>
@@ -18,4 +20,4 @@
         <Label x:Name="lblStatusBar" Content="Status Bar" HorizontalAlignment="Left" Margin="455,290,0,0" VerticalAlignment="Top" Width="316"/>
 
     </Grid>
-</Window>
+</Controls:MetroWindow>
