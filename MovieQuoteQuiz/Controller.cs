@@ -12,14 +12,16 @@ namespace MovieQuoteQuiz
 
         public static void StartNewGame()
         {
+            Database.SetupQuestions();
+            Database.MakeSaveFile();
+            Database.WriteToSaveFile();
+            Database.ReadFromSaveFile();
+
             Database.gamCurrentGame = new Game("Player1", Database.queListOfQuestions.Count);
             Database.gamCurrentGame.SetupRounds();
             Database.gamCurrentGame.PopulateViewWithRound();
             View.isbtnNewGamebuttonActive = false;
             View.isbtnSubmitAnswerActive = true;
-
-            Database.MakeSaveFile();
-            Database.WriteToSaveFile();
         }
 
         public static void SubmitAnswer(int intSelectedRadio)

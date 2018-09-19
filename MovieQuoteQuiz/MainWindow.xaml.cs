@@ -25,7 +25,6 @@ namespace MovieQuoteQuiz
 
         public MainWindow()
         {
-            Database.SetupQuestions();
             View.SetupDefultValues();
             InitializeComponent();
             PopulateFieldsWithView();

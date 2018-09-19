@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace MovieQuoteQuiz
 {
+    [Serializable]
     class Question
     {
         public string strMovieTitle { get; set; }
@@ -17,11 +18,6 @@ namespace MovieQuoteQuiz
             strMovieTitle = strMovieTitleP;
             strQuoteText = strQuoteTextP;
             intQuestionRef = intQuestionRefP;
-        }
-
-        public void TESTTEST()
-        {
-
         }
 
     }
