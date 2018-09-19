@@ -28,6 +28,11 @@ namespace MovieQuoteQuiz
             strlblStatusBar = "Points: " + intTotalPoints + " - " + strMessage;
         }
 
+        public static void UpdateStatusBarError(string strMessage)
+        {
+            strlblStatusBar = "Error: " + strMessage;
+        }
+
         public static void SetupDefultValues()
         {
             strLblQuestioRoundText = "Question 0";

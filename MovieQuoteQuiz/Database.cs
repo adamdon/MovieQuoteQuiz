@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,37 @@ namespace MovieQuoteQuiz
     {
         public static List<Question> queListOfQuestions = new List<Question>();
         public static Game gamCurrentGame;
+
+        public static BinaryWriter binWriteSave; 
+
+
+
+        public static void MakeSaveFile()
+        {
+            try
+            {
+                binWriteSave = new BinaryWriter(new FileStream("save.db", FileMode.Create));
+            }
+            catch (IOException e)
+            {
+                View.UpdateStatusBarError("Could not Create File - " + e.Message.ToString());
+            }
+        }
+
+        public static void WriteToSaveFile()
+        {
+            try
+            {
+                binWriteSave.Write("Test text");
+
+            }
+            catch (IOException e)
+            {
+                View.UpdateStatusBarError("Could not Write to File - " + e.Message.ToString());
+                return;
+            }
+            binWriteSave.Close();
+        }
 
         public static void SetupQuestions()
         {

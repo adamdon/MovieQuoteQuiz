@@ -17,6 +17,9 @@ namespace MovieQuoteQuiz
             Database.gamCurrentGame.PopulateViewWithRound();
             View.isbtnNewGamebuttonActive = false;
             View.isbtnSubmitAnswerActive = true;
+
+            Database.MakeSaveFile();
+            Database.WriteToSaveFile();
         }
 
         public static void SubmitAnswer(int intSelectedRadio)
