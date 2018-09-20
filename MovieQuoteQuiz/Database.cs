@@ -70,11 +70,22 @@ namespace MovieQuoteQuiz
 
         public static byte[] GetArrayOfBytesFromBinaryReader()
         {
-            //byte[] allData = binReadSave.ReadBytes(int.MaxValue);
+            //byte[] allData2 = binReadSave.ReadBytes(10000);
+            //return AllData2
 
-            byte[] allData2 = binReadSave.ReadBytes(10000);
+            const int intBufferSize = 4096;
+            using (MemoryStream memSteamTemp = new MemoryStream())
+            {
+                byte[] bytBuffer = new byte[intBufferSize];
+                int intCount;
+                while ((intCount = binReadSave.Read(bytBuffer, 0, bytBuffer.Length)) != 0)
+                {
+                    memSteamTemp.Write(bytBuffer, 0, intCount);
+                }
+                        
+                return memSteamTemp.ToArray();
+            }
 
-            return allData2;
         }
 
         public static byte[] SerializeListToBytes<List>(List lisListToBeSerialized)

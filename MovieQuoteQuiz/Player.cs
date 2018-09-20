@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace MovieQuoteQuiz
 {
+    [Serializable]
     class Player
     {
-        //name, best percentage, average percentage, total score
+        public string strUsername { get; set; }
+
+        public Player(string strUsernameP)
+        {
+            strUsername = strUsernameP;
+        }
+
     }
 }

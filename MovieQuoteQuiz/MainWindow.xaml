@@ -35,7 +35,7 @@
         <RadioButton x:Name="radAnswer2" Content="Answer 2" HorizontalAlignment="Left" Margin="10,215,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="radAnswer3" Content="Answer 3" HorizontalAlignment="Left" Margin="10,258,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btnSubmitAnswer" Content="Submit Answer" HorizontalAlignment="Left" Margin="182,310,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="-1.813,-0.333" Click="btnSubmitAnswer_Click"/>
-        <Label x:Name="lblStatusBar" Content="Status Bar" HorizontalAlignment="Left" Margin="10,362,0,0" VerticalAlignment="Top" Width="316"/>
+        <Label x:Name="lblStatusBar" Content="Status Bar" HorizontalAlignment="Left" Margin="10,362,0,0" VerticalAlignment="Top" Width="674"/>
     </Grid>
 
 </Controls:MetroWindow>
