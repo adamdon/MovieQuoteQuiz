@@ -10,10 +10,16 @@ namespace MovieQuoteQuiz
     class Player
     {
         public string strUsername { get; set; }
+        public int intTotalRoundsPlayed { get; set; }
+        public int intTotalCorrectQuestions { get; set; }
+        public int intintTotalPointsAllGames { get; set; }
 
         public Player(string strUsernameP)
         {
             strUsername = strUsernameP;
+            intTotalRoundsPlayed = 0;
+            intTotalCorrectQuestions = 0;
+            intintTotalPointsAllGames = 0;
         }
 
     }
