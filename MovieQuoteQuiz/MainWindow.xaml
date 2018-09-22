@@ -27,15 +27,20 @@
 
     <Grid Background="#000000">
         <!-- <Grid Background="#000000"> activate for blue gb -->
-        <Label x:Name="lblTestLable1" Style = "{StaticResource myLabelStyleMedium}" Content="Click to start" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnTestbutton" Content="Start!" HorizontalAlignment="Left" Margin="201,19,0,0" VerticalAlignment="Top" Width="125" Click="btnNewGamebutton_Click"/>
-        <Label x:Name="lblQuestionNumber" Style = "{StaticResource myLabelStyleMedium}" Content="Question 0" HorizontalAlignment="Left" Margin="10,301,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblCurrentQuestion" Style = "{StaticResource myLabelStyleMedium}" Content="Movie Quote" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="radAnswer1"  Content="Answer 1" HorizontalAlignment="Left" Margin="10,168,0,0" VerticalAlignment="Top" x:FieldModifier="public" />
-        <RadioButton x:Name="radAnswer2" Content="Answer 2" HorizontalAlignment="Left" Margin="10,215,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="radAnswer3" Content="Answer 3" HorizontalAlignment="Left" Margin="10,258,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnSubmitAnswer" Content="Submit Answer" HorizontalAlignment="Left" Margin="182,310,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="-1.813,-0.333" Click="btnSubmitAnswer_Click"/>
+        <Label x:Name="lblTestLable1" Style = "{StaticResource myLabelStyleMedium}" Content="Click to start" HorizontalAlignment="Left" Margin="19,11,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnTestbutton" Content="Start!" HorizontalAlignment="Left" Margin="202,20,0,0" VerticalAlignment="Top" Width="125" Click="btnNewGamebutton_Click"/>
+        
+        <Label x:Name="lblCurrentQuestion" Style = "{StaticResource myLabelStyleMedium}" Content="Movie Quote" HorizontalAlignment="Left" Margin="19,99,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="radAnswer1"  Content="Answer 1" HorizontalAlignment="Left" Margin="28,158,0,0" VerticalAlignment="Top" x:FieldModifier="public" />
+        <RadioButton x:Name="radAnswer2" Content="Answer 2" HorizontalAlignment="Left" Margin="28,205,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="radAnswer3" Content="Answer 3" HorizontalAlignment="Left" Margin="28,248,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnSubmitAnswer" Content="Submit Answer" HorizontalAlignment="Left" Margin="202,299,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="-1.813,-0.333" Click="btnSubmitAnswer_Click"/>
         <Label x:Name="lblStatusBar" Content="Status Bar" HorizontalAlignment="Left" Margin="10,362,0,0" VerticalAlignment="Top" Width="674"/>
+        <GroupBox Header="GroupBox"  Height="280" Width="464" HorizontalAlignment="Left" Margin="244,52,-14.4,0" VerticalAlignment="Top">
+            <Grid  Height="250" Width="455" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" >
+                <Label x:Name="lblQuestionNumber" Style = "{StaticResource myLabelStyleMedium}" Content="Question 0" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"/>
+            </Grid>
+        </GroupBox>
     </Grid>
 
 </Controls:MetroWindow>
