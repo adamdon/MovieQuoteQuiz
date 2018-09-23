@@ -10,24 +10,32 @@ namespace MovieQuoteQuiz
     {
         public static Random ranRandomNumber = new Random();
 
-        public static void StartNewGame()
+        public static void StartNewGame(string srtPlayerName)
         {
-            Database.SetupQuestions();
-            Database.MakeSaveFile();
-            Database.WriteToSaveFile();
-            Database.ReadFromSaveFile();
-
-            Database.gamCurrentGame = new Game("Player1", Database.queListOfQuestions.Count);
+            Database.gamCurrentGame = new Game(srtPlayerName, Database.queListOfQuestions.Count);
+            Database.gamCurrentGame.UpdateListOfPlayersIfNew();
             Database.gamCurrentGame.SetupRounds();
             Database.gamCurrentGame.PopulateViewWithRound();
+
             View.isbtnNewGamebuttonActive = false;
             View.isbtnSubmitAnswerActive = true;
+            View.isgruQuizGroupBoxActive = true;
         }
 
         public static void SubmitAnswer(int intSelectedRadio)
         {
             Database.gamCurrentGame.SubmitAnswer(intSelectedRadio);
             Database.gamCurrentGame.PopulateViewWithRound();
+        }
+
+        public static void SetupApplication()
+        {
+            View.SetupDefultValues();
+
+            Database.SetupQuestions();
+            Database.MakeSaveFile();
+            Database.WriteToSaveFile();
+            Database.ReadFromSaveFile();
         }
 
 

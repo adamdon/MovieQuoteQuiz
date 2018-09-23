@@ -23,6 +23,8 @@ namespace MovieQuoteQuiz
         public static bool isbtnSubmitAnswerActive = false;
         public static bool isbtnNewGamebuttonActive = true;
 
+        public static bool isgruQuizGroupBoxActive = false;
+
         public static void UpdateStatusBar(int intTotalPoints, string strMessage)
         {
             strlblStatusBar = "Points: " + intTotalPoints + " - " + strMessage;
@@ -48,6 +50,7 @@ namespace MovieQuoteQuiz
 
             isbtnSubmitAnswerActive = false;
             isbtnNewGamebuttonActive = true;
+            isgruQuizGroupBoxActive = false;
         }
     }
 }

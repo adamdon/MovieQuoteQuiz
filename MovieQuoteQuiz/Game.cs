@@ -37,6 +37,16 @@ namespace MovieQuoteQuiz
 
         }
 
+        public void UpdateListOfPlayersIfNew()
+        {
+            Player plaTempPlayer = new Player(strPlayerName);
+
+            foreach (Player strUsername in Database.plaListOfPlayers)
+            {
+
+            }
+        }
+
         public void SubmitAnswer(int intSelectedRadio)
         {
           
@@ -107,7 +117,7 @@ namespace MovieQuoteQuiz
                 intListOfUsedRadioPositions.Clear();
                 intListOfUsedAnswers.Clear();
             }
-            View.UpdateStatusBar(intTotalPoints, ("New game setup with " + intRoundsTotal + " rounds"));
+            View.UpdateStatusBar(intTotalPoints, (strPlayerName + "'s game setup with " + intRoundsTotal + " rounds"));
           
         }
 

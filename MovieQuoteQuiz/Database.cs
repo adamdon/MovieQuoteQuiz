@@ -13,6 +13,8 @@ namespace MovieQuoteQuiz
         public static List<Question> queListOfQuestions = new List<Question>();
         public static List<Question> queListOfQuestionsTemp = new List<Question>();
 
+        public static List<Player> plaListOfPlayers = new List<Player>();
+
         public static Game gamCurrentGame;
 
         public static BinaryWriter binWriteSave;

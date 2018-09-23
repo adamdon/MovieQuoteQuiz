@@ -25,14 +25,15 @@ namespace MovieQuoteQuiz
 
         public MainWindow()
         {
-            View.SetupDefultValues();
+            Controller.SetupApplication();
             InitializeComponent();
+
             PopulateFieldsWithView();
         }
 
         private void btnNewGamebutton_Click(object sender, RoutedEventArgs e)
         {
-            Controller.StartNewGame();
+            Controller.StartNewGame(txtPlayerNameTextBox.Text.ToString());
             PopulateFieldsWithView();
         }
 
@@ -70,6 +71,7 @@ namespace MovieQuoteQuiz
 
             btnSubmitAnswer.IsEnabled = View.isbtnSubmitAnswerActive;
             btnTestbutton.IsEnabled = View.isbtnNewGamebuttonActive;
+            gruQuizGroupBox.IsEnabled = View.isgruQuizGroupBoxActive;
         }
 
         private void btnUpdateStatusBar_Click(object sender, RoutedEventArgs e)
