@@ -17,18 +17,25 @@ namespace MovieQuoteQuiz
         public static List<Round> rouListOfRounds;
 
         public static string strPlayerName;
+        public static Player plaCurrentPlayer;
+
         public static int intRoundsTotal;
         public static int intRoundCurrent;
         public static int intCorrectQuestions;
         public static int intTotalPoints;
 
+        public static bool isGameInProgress;
+
         public Game(string strPlayerNameP, int intRoundsTotalP)
         {
             strPlayerName = strPlayerNameP;
+
+
             intRoundsTotal = intRoundsTotalP;
             intRoundCurrent = 0;
             intCorrectQuestions = 0;
-            intTotalPoints = 100;
+            intTotalPoints = (intRoundsTotal * 5);
+            isGameInProgress = true;
 
             rouListOfRounds = new List<Round>();
             intListOfUsedQuestions = new List<int>();
@@ -37,14 +44,47 @@ namespace MovieQuoteQuiz
 
         }
 
-        public void UpdateListOfPlayersIfNew()
+        public void SetPlayer()
         {
-            Player plaTempPlayer = new Player(strPlayerName);
+            plaCurrentPlayer = new Player(strPlayerName);
 
-            foreach (Player strUsername in Database.plaListOfPlayers)
+            if (IsPlayerNew(strPlayerName) == true)
             {
-
+                Database.plaListOfPlayers.Add(plaCurrentPlayer);
             }
+            else
+            {
+                plaCurrentPlayer = GetPlayerFromList(strPlayerName);
+            }
+
+
+        }
+
+        public Player GetPlayerFromList(string strPlayerNameTemp)
+        {
+            foreach (Player plaPlayerIndex in Database.plaListOfPlayers)
+            {
+                if (plaPlayerIndex.strUsername == strPlayerNameTemp)
+                {
+                    View.UpdateStatusBarError("Player " + strPlayerName + " not new");
+                    return plaPlayerIndex;
+                }
+            }
+            return new Player("Error");
+        }
+
+        public bool IsPlayerNew(string strPlayerNameTemp)
+        {
+            foreach (Player plaPlayerIndex in Database.plaListOfPlayers)
+            {
+                if (plaPlayerIndex.strUsername == strPlayerNameTemp)
+                {
+                    View.UpdateStatusBarError("Player " + strPlayerName + " not new");
+                    return false;
+                }
+            }
+            View.UpdateStatusBarError("Player " + strPlayerName + " added to db");
+            return true;
         }
 
         public void SubmitAnswer(int intSelectedRadio)
@@ -72,13 +112,16 @@ namespace MovieQuoteQuiz
             {  
                 EndGame();
             }
-                
 
+            View.strlblCurrentRound = ((intRoundCurrent + 1) + "/" + intRoundsTotal);
+            View.strlblCorrectAnswers = intCorrectQuestions.ToString();
+            View.strlblGamePoints = intTotalPoints.ToString();
         }
 
 
         public void EndGame()
         {
+            isGameInProgress = false;
             View.UpdateStatusBar(intTotalPoints, "Game End!");
             View.isbtnSubmitAnswerActive = false;
             View.isbtnNewGamebuttonActive = true;
@@ -117,17 +160,19 @@ namespace MovieQuoteQuiz
                 intListOfUsedRadioPositions.Clear();
                 intListOfUsedAnswers.Clear();
             }
-            View.UpdateStatusBar(intTotalPoints, (strPlayerName + "'s game setup with " + intRoundsTotal + " rounds"));
           
         }
 
         public void PopulateViewWithRound()
         {
-            View.strLblQuestioRoundText = ("Question: " + (intRoundCurrent + 1));
-            View.strLblCurrentQuestion = rouListOfRounds[intRoundCurrent].queCurrentQuestion.strQuoteText;
-            View.strRadAnswer1 = GetRadioPositionsOneText();
-            View.strRadAnswer2 = GetRadioPositionsTwoText();
-            View.strRadAnswer3 = GetRadioPositionsThreeText();
+            if (isGameInProgress == true)
+            {
+                View.strLblQuestioRoundText = ("Question: " + (intRoundCurrent + 1));
+                View.strLblCurrentQuestion = ("\"" + rouListOfRounds[intRoundCurrent].queCurrentQuestion.strQuoteText + "\"");
+                View.strRadAnswer1 = GetRadioPositionsOneText();
+                View.strRadAnswer2 = GetRadioPositionsTwoText();
+                View.strRadAnswer3 = GetRadioPositionsThreeText();
+            }
         }
 
         public string GetRadioPositionsOneText()

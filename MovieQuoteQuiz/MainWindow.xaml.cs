@@ -33,7 +33,15 @@ namespace MovieQuoteQuiz
 
         private void btnNewGamebutton_Click(object sender, RoutedEventArgs e)
         {
-            Controller.StartNewGame(txtPlayerNameTextBox.Text.ToString());
+            if (cmbRoundsAmount.SelectedIndex == 0)
+            {
+                Controller.StartNewGame(txtPlayerNameTextBox.Text.ToString(), 5);
+            }
+            else if (cmbRoundsAmount.SelectedIndex == 1)
+            {
+                Controller.StartNewGame(txtPlayerNameTextBox.Text.ToString(), 6);
+            }
+
             PopulateFieldsWithView();
         }
 
@@ -61,6 +69,10 @@ namespace MovieQuoteQuiz
             lblCurrentQuestion.Content = View.strLblCurrentQuestion;
             lblStatusBar.Content = View.strlblStatusBar;
 
+            lblCurrentRound.Content = View.strlblCurrentRound;
+            lblCorrectAnswers.Content = View.strlblCorrectAnswers;
+            lblGamePoints.Content = View.strlblGamePoints;
+
             radAnswer1.Content = View.strRadAnswer1;
             radAnswer2.Content = View.strRadAnswer2;
             radAnswer3.Content = View.strRadAnswer3;
@@ -72,11 +84,6 @@ namespace MovieQuoteQuiz
             btnSubmitAnswer.IsEnabled = View.isbtnSubmitAnswerActive;
             btnTestbutton.IsEnabled = View.isbtnNewGamebuttonActive;
             gruQuizGroupBox.IsEnabled = View.isgruQuizGroupBoxActive;
-        }
-
-        private void btnUpdateStatusBar_Click(object sender, RoutedEventArgs e)
-        {
-            PopulateFieldsWithView();
         }
     }
 }

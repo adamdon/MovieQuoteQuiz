@@ -8,18 +8,24 @@ namespace MovieQuoteQuiz
 {
     class Controller
     {
-        public static Random ranRandomNumber = new Random();
+        //public static Random ranRandomNumber = new Random();
 
-        public static void StartNewGame(string srtPlayerName)
+        public static void StartNewGame(string strPlayerName, int intRoundsTotal)
         {
-            Database.gamCurrentGame = new Game(srtPlayerName, Database.queListOfQuestions.Count);
-            Database.gamCurrentGame.UpdateListOfPlayersIfNew();
+            View.SetupDefultValues();
+
+            Database.gamCurrentGame = new Game(strPlayerName, intRoundsTotal);
+            Database.gamCurrentGame.SetPlayer();
             Database.gamCurrentGame.SetupRounds();
             Database.gamCurrentGame.PopulateViewWithRound();
 
             View.isbtnNewGamebuttonActive = false;
             View.isbtnSubmitAnswerActive = true;
             View.isgruQuizGroupBoxActive = true;
+
+            View.strlblCurrentRound = ("1/" + intRoundsTotal);
+            View.UpdateStatusBar(0, (strPlayerName + "'s game setup with " + intRoundsTotal + " rounds"));
+
         }
 
         public static void SubmitAnswer(int intSelectedRadio)

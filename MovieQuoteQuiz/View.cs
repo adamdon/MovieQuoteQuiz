@@ -12,6 +12,10 @@ namespace MovieQuoteQuiz
         public static string strLblCurrentQuestion = "Movie Quote";
         public static string strlblStatusBar = "Status Bar";
 
+        public static string strlblCurrentRound = "0/0";
+        public static string strlblCorrectAnswers = "0";
+        public static string strlblGamePoints = "0";
+
         public static string strRadAnswer1 = "Answer 1";
         public static string strRadAnswer2 = "Answer 2";
         public static string strRadAnswer3 = "Answer 3";
@@ -39,6 +43,10 @@ namespace MovieQuoteQuiz
         {
             strLblQuestioRoundText = "Question 0";
             strLblCurrentQuestion = "Movie Quote";
+
+            strlblCurrentRound = "0/0";
+            strlblCorrectAnswers = "0";
+            strlblGamePoints = "0";
 
             strRadAnswer1 = "Answer 1";
             strRadAnswer2 = "Answer 2";

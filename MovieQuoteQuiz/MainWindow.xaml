@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:MovieQuoteQuiz"
         mc:Ignorable="d"
         
-        Title="Movie Quote Quiz" Height="450" Width="700">
+        Title="Movie Quote Quiz" Height="450" Width="600">
 
     <Window.Resources>
 
@@ -27,22 +27,38 @@
 
     <Grid Background="#000000">
         <!-- <Grid Background="#000000"> activate for blue gb -->
-        <Label x:Name="lblTestLable1" Style = "{StaticResource myLabelStyleMedium}" Content="Click to start" HorizontalAlignment="Left" Margin="19,11,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnTestbutton" Content="Start!" HorizontalAlignment="Left" Margin="202,20,0,0" VerticalAlignment="Top" Width="125" Click="btnNewGamebutton_Click"/>
-        
-        <Label x:Name="lblStatusBar" Content="Status Bar" HorizontalAlignment="Left" Margin="10,385,0,0" VerticalAlignment="Top" Width="674"/>
-        <GroupBox x:Name="gruQuizGroupBox" Header="Quiz"  Height="230" Width="550" HorizontalAlignment="Left" Margin="19,64,0,0" VerticalAlignment="Top">
-            <Grid  Height="200" Width="540" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" >
-                <Label x:Name="lblQuestionNumber" Style = "{StaticResource myLabelStyleMedium}" Content="Question 0" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"/>
-                <Label x:Name="lblCurrentQuestion" Style = "{StaticResource myLabelStyleSmall}" Content="Movie Quote" HorizontalAlignment="Left" Margin="0,50,0,0" VerticalAlignment="Top"/>
-                <RadioButton x:Name="radAnswer1"  Content="Answer 1" HorizontalAlignment="Left" Margin="0,100,0,0" VerticalAlignment="Top" x:FieldModifier="public" />
-                <RadioButton x:Name="radAnswer2" Content="Answer 2" HorizontalAlignment="Left" Margin="0,130,0,0" VerticalAlignment="Top"/>
-                <RadioButton x:Name="radAnswer3" Content="Answer 3" HorizontalAlignment="Left" Margin="0,160,0,0" VerticalAlignment="Top"/>
-                <Button x:Name="btnSubmitAnswer" Content="Submit Answer" HorizontalAlignment="Left" Margin="200,10,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="-1.813,-0.333" Click="btnSubmitAnswer_Click"/>
+        <Label x:Name="lblTestLable1" Style = "{StaticResource myLabelStyleMedium}" Content="Click to start" HorizontalAlignment="Left" Margin="19,10,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnTestbutton" Content="Start!" HorizontalAlignment="Left" Margin="198,20,0,0" VerticalAlignment="Top" Width="125" Click="btnNewGamebutton_Click"/>
+
+        <Label x:Name="lblStatusBar" Content="Status Bar" HorizontalAlignment="Left" Margin="410,385,0,0" VerticalAlignment="Top" Width="173"/>
+        <GroupBox x:Name="gruQuizGroupBox" Header="Quiz"  Height="170" Width="550" HorizontalAlignment="Left" Margin="19,64,0,0" VerticalAlignment="Top">
+            <Grid  Height="140" Width="540" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" >
+                <Label x:Name="lblQuestionNumber" Style = "{StaticResource myLabelStyleMedium}" Content="Question 0" HorizontalAlignment="Left" Margin="3,34,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="lblCurrentQuestion" Style = "{StaticResource myLabelStyleSmall}" Content="Movie Quote" HorizontalAlignment="Left" Margin="3,4,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="radAnswer1"  Content="Answer 1" HorizontalAlignment="Left" Margin="203,40,0,0" VerticalAlignment="Top" x:FieldModifier="public" />
+                <RadioButton x:Name="radAnswer2" Content="Answer 2" HorizontalAlignment="Left" Margin="203,70,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="radAnswer3" Content="Answer 3" HorizontalAlignment="Left" Margin="203,100,0,0" VerticalAlignment="Top"/>
+                <Button x:Name="btnSubmitAnswer" Content="Submit Answer" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="-1.813,-0.333" Click="btnSubmitAnswer_Click"/>
 
             </Grid>
         </GroupBox>
-        <TextBox x:Name="txtPlayerNameTextBox" HorizontalAlignment="Left" Height="23" Margin="358,21,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="120"/>
+        <GroupBox x:Name="gruScoreGroupBox" Header="Score" HorizontalAlignment="Left" Height="150" Margin="19,251,0,0" VerticalAlignment="Top" Width="250">
+            <Grid HorizontalAlignment="Left" Height="115" Margin="0,0,0,0" VerticalAlignment="Top" Width="240">
+                <Label x:Name="lblReadOnly1" Content="Current Round:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="lblReadOnly2" Content="Correct Answers:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="lblReadOnly3" Content="Game Points:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="lblCurrentRound" Content="0/0" HorizontalAlignment="Left" Margin="164,10,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="lblCorrectAnswers" Content="0" HorizontalAlignment="Left" Margin="164,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.02,1.205"/>
+                <Label x:Name="lblGamePoints" Content="0" HorizontalAlignment="Left" Margin="164,72,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.78,1.128"/>
+
+            </Grid>
+        </GroupBox>
+        <TextBox x:Name="txtPlayerNameTextBox" HorizontalAlignment="Left" Height="23" Margin="343,20,0,0" TextWrapping="Wrap" Text="PlayerName" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cmbRoundsAmount" HorizontalAlignment="Left" Margin="477,20,0,0" VerticalAlignment="Top" Width="92">
+            <ComboBoxItem IsSelected="True">5 Rounds</ComboBoxItem>
+            <ComboBoxItem>6 Rounds</ComboBoxItem>
+        </ComboBox>
+        
     </Grid>
 
 </Controls:MetroWindow>
