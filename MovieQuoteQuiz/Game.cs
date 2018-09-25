@@ -46,19 +46,27 @@ namespace MovieQuoteQuiz
 
         public void SetPlayer()
         {
-            plaCurrentPlayer = new Player(strPlayerName);
-
             if (IsPlayerNew(strPlayerName) == true)
             {
+                plaCurrentPlayer = new Player(strPlayerName);
                 Database.plaListOfPlayers.Add(plaCurrentPlayer);
             }
             else
             {
                 plaCurrentPlayer = GetPlayerFromList(strPlayerName);
             }
-
-
         }
+
+        public void UpdatePlayer()
+        {
+            plaCurrentPlayer.intintTotalPointsAllGames = (plaCurrentPlayer.intintTotalPointsAllGames + intTotalPoints);
+            plaCurrentPlayer.intTotalCorrectQuestions = (plaCurrentPlayer.intTotalCorrectQuestions + intCorrectQuestions);
+
+            int intIndexOfPlayerItem = Database.plaListOfPlayers.IndexOf(plaCurrentPlayer);
+            Database.plaListOfPlayers.Insert(intIndexOfPlayerItem, plaCurrentPlayer);
+        }
+
+
 
         public Player GetPlayerFromList(string strPlayerNameTemp)
         {
@@ -121,6 +129,8 @@ namespace MovieQuoteQuiz
 
         public void EndGame()
         {
+            UpdatePlayer();
+
             isGameInProgress = false;
             View.UpdateStatusBar(intTotalPoints, "Game End!");
             View.isbtnSubmitAnswerActive = false;
