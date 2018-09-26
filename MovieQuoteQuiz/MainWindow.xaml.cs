@@ -73,6 +73,10 @@ namespace MovieQuoteQuiz
             lblCorrectAnswers.Content = View.strlblCorrectAnswers;
             lblGamePoints.Content = View.strlblGamePoints;
 
+            lblPlayerName.Content = View.strlblPlayerName;
+            lblPercentageCorrect.Content = View.strlblPercentageCorrect;
+            lblTotalPoints.Content = View.strlblTotalPoints;
+
             radAnswer1.Content = View.strRadAnswer1;
             radAnswer2.Content = View.strRadAnswer2;
             radAnswer3.Content = View.strRadAnswer3;

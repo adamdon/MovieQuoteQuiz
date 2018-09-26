@@ -16,6 +16,10 @@ namespace MovieQuoteQuiz
         public static string strlblCorrectAnswers = "0";
         public static string strlblGamePoints = "0";
 
+        public static string strlblPlayerName = "Name";
+        public static string strlblPercentageCorrect = "00%";
+        public static string strlblTotalPoints = "0";
+
         public static string strRadAnswer1 = "Answer 1";
         public static string strRadAnswer2 = "Answer 2";
         public static string strRadAnswer3 = "Answer 3";
@@ -47,6 +51,10 @@ namespace MovieQuoteQuiz
             strlblCurrentRound = "0/0";
             strlblCorrectAnswers = "0";
             strlblGamePoints = "0";
+
+            //strlblPlayerName = "Name";
+            //strlblPercentageCorrect = "00%";
+            //strlblTotalPoints = "0";
 
             strRadAnswer1 = "Answer 1";
             strRadAnswer2 = "Answer 2";

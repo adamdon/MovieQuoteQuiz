@@ -61,6 +61,7 @@ namespace MovieQuoteQuiz
         {
             plaCurrentPlayer.intintTotalPointsAllGames = (plaCurrentPlayer.intintTotalPointsAllGames + intTotalPoints);
             plaCurrentPlayer.intTotalCorrectQuestions = (plaCurrentPlayer.intTotalCorrectQuestions + intCorrectQuestions);
+            plaCurrentPlayer.intTotalRoundsPlayed = (plaCurrentPlayer.intTotalRoundsPlayed + intRoundsTotal);
 
             int intIndexOfPlayerItem = Database.plaListOfPlayers.IndexOf(plaCurrentPlayer);
             Database.plaListOfPlayers.Insert(intIndexOfPlayerItem, plaCurrentPlayer);
@@ -121,15 +122,14 @@ namespace MovieQuoteQuiz
                 EndGame();
             }
 
-            View.strlblCurrentRound = ((intRoundCurrent + 1) + "/" + intRoundsTotal);
-            View.strlblCorrectAnswers = intCorrectQuestions.ToString();
-            View.strlblGamePoints = intTotalPoints.ToString();
+            PopulateViewWithScore();
         }
 
 
         public void EndGame()
         {
             UpdatePlayer();
+            PopulateViewWithPlayer();
 
             isGameInProgress = false;
             View.UpdateStatusBar(intTotalPoints, "Game End!");
@@ -171,6 +171,20 @@ namespace MovieQuoteQuiz
                 intListOfUsedAnswers.Clear();
             }
           
+        }
+
+        public static void PopulateViewWithPlayer()
+        {
+            View.strlblPlayerName = plaCurrentPlayer.strUsername;
+            View.strlblPercentageCorrect = (((plaCurrentPlayer.intTotalCorrectQuestions / plaCurrentPlayer.intTotalRoundsPlayed) * 100).ToString() + "%");
+            View.strlblTotalPoints = plaCurrentPlayer.intintTotalPointsAllGames.ToString();
+        }
+
+        public static void PopulateViewWithScore()
+        {
+            View.strlblCurrentRound = ((intRoundCurrent + 1) + "/" + intRoundsTotal);
+            View.strlblCorrectAnswers = intCorrectQuestions.ToString();
+            View.strlblGamePoints = intTotalPoints.ToString();
         }
 
         public void PopulateViewWithRound()
