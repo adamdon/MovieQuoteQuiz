@@ -44,57 +44,6 @@ namespace MovieQuoteQuiz
 
         }
 
-        public void SetPlayer()
-        {
-            if (IsPlayerNew(strPlayerName) == true)
-            {
-                plaCurrentPlayer = new Player(strPlayerName);
-                Database.plaListOfPlayers.Add(plaCurrentPlayer);
-            }
-            else
-            {
-                plaCurrentPlayer = GetPlayerFromList(strPlayerName);
-            }
-        }
-
-        public void UpdatePlayer()
-        {
-            plaCurrentPlayer.intintTotalPointsAllGames = (plaCurrentPlayer.intintTotalPointsAllGames + intTotalPoints);
-            plaCurrentPlayer.intTotalCorrectQuestions = (plaCurrentPlayer.intTotalCorrectQuestions + intCorrectQuestions);
-            plaCurrentPlayer.intTotalRoundsPlayed = (plaCurrentPlayer.intTotalRoundsPlayed + intRoundsTotal);
-
-            int intIndexOfPlayerItem = Database.plaListOfPlayers.IndexOf(plaCurrentPlayer);
-            Database.plaListOfPlayers.Insert(intIndexOfPlayerItem, plaCurrentPlayer);
-        }
-
-
-
-        public Player GetPlayerFromList(string strPlayerNameTemp)
-        {
-            foreach (Player plaPlayerIndex in Database.plaListOfPlayers)
-            {
-                if (plaPlayerIndex.strUsername == strPlayerNameTemp)
-                {
-                    View.UpdateStatusBarError("Player " + strPlayerName + " not new");
-                    return plaPlayerIndex;
-                }
-            }
-            return new Player("Error");
-        }
-
-        public bool IsPlayerNew(string strPlayerNameTemp)
-        {
-            foreach (Player plaPlayerIndex in Database.plaListOfPlayers)
-            {
-                if (plaPlayerIndex.strUsername == strPlayerNameTemp)
-                {
-                    View.UpdateStatusBarError("Player " + strPlayerName + " not new");
-                    return false;
-                }
-            }
-            View.UpdateStatusBarError("Player " + strPlayerName + " added to db");
-            return true;
-        }
 
         public void SubmitAnswer(int intSelectedRadio)
         {
@@ -138,7 +87,83 @@ namespace MovieQuoteQuiz
             View.SetupDefultValues();
         }
 
+        public void PopulateViewWithPlayer()
+        {
+            View.strlblPlayerName = plaCurrentPlayer.strUsername;
+            View.strlblPercentageCorrect = ((((double)plaCurrentPlayer.intTotalCorrectQuestions / (double)plaCurrentPlayer.intTotalRoundsPlayed) * 100).ToString() + "%");
+            View.strlblTotalPoints = plaCurrentPlayer.intintTotalPointsAllGames.ToString();
+        }
 
+        public void PopulateViewWithScore()
+        {
+            View.strlblCurrentRound = ((intRoundCurrent + 1) + "/" + intRoundsTotal);
+            View.strlblCorrectAnswers = intCorrectQuestions.ToString();
+            View.strlblGamePoints = intTotalPoints.ToString();
+        }
+
+        public void PopulateViewWithRound()
+        {
+            if (isGameInProgress == true)
+            {
+                View.strLblQuestioRoundText = ("Question: " + (intRoundCurrent + 1));
+                View.strLblCurrentQuestion = ("\"" + rouListOfRounds[intRoundCurrent].queCurrentQuestion.strQuoteText + "\"");
+                View.strRadAnswer1 = GetRadioPositionsOneText();
+                View.strRadAnswer2 = GetRadioPositionsTwoText();
+                View.strRadAnswer3 = GetRadioPositionsThreeText();
+            }
+        }
+
+        public void SetPlayer()
+        {
+            if (IsPlayerNew(strPlayerName) == true)
+            {
+                plaCurrentPlayer = new Player(strPlayerName);
+                Database.plaListOfPlayers.Add(plaCurrentPlayer);
+            }
+            else
+            {
+                plaCurrentPlayer = GetPlayerFromList(strPlayerName);
+            }
+        }
+
+        public bool IsPlayerNew(string strPlayerNameTemp)
+        {
+            foreach (Player plaPlayerIndex in Database.plaListOfPlayers)
+            {
+                if (plaPlayerIndex.strUsername == strPlayerNameTemp)
+                {
+                    View.UpdateStatusBarError("Player " + strPlayerName + " not new");
+                    return false;
+                }
+            }
+            View.UpdateStatusBarError("Player " + strPlayerName + " added to db");
+            return true;
+        }
+
+        public void UpdatePlayer()
+        {
+            plaCurrentPlayer.intintTotalPointsAllGames = (plaCurrentPlayer.intintTotalPointsAllGames + intTotalPoints);
+            plaCurrentPlayer.intTotalCorrectQuestions = (plaCurrentPlayer.intTotalCorrectQuestions + intCorrectQuestions);
+            plaCurrentPlayer.intTotalRoundsPlayed = (plaCurrentPlayer.intTotalRoundsPlayed + intRoundsTotal);
+
+            int intIndexOfPlayerItem = Database.plaListOfPlayers.IndexOf(plaCurrentPlayer);
+            Database.plaListOfPlayers.Insert(intIndexOfPlayerItem, plaCurrentPlayer);
+        }
+
+
+
+        public Player GetPlayerFromList(string strPlayerNameTemp)
+        {
+            foreach (Player plaPlayerIndex in Database.plaListOfPlayers)
+            {
+                if (plaPlayerIndex.strUsername == strPlayerNameTemp)
+                {
+                    View.UpdateStatusBarError("Player " + strPlayerName + " not new");
+                    return plaPlayerIndex;
+                }
+            }
+            return new Player("Error");
+        }
 
         public void SetupRounds()
         {
@@ -173,31 +198,6 @@ namespace MovieQuoteQuiz
           
         }
 
-        public static void PopulateViewWithPlayer()
-        {
-            View.strlblPlayerName = plaCurrentPlayer.strUsername;
-            View.strlblPercentageCorrect = (((plaCurrentPlayer.intTotalCorrectQuestions / plaCurrentPlayer.intTotalRoundsPlayed) * 100).ToString() + "%");
-            View.strlblTotalPoints = plaCurrentPlayer.intintTotalPointsAllGames.ToString();
-        }
-
-        public static void PopulateViewWithScore()
-        {
-            View.strlblCurrentRound = ((intRoundCurrent + 1) + "/" + intRoundsTotal);
-            View.strlblCorrectAnswers = intCorrectQuestions.ToString();
-            View.strlblGamePoints = intTotalPoints.ToString();
-        }
-
-        public void PopulateViewWithRound()
-        {
-            if (isGameInProgress == true)
-            {
-                View.strLblQuestioRoundText = ("Question: " + (intRoundCurrent + 1));
-                View.strLblCurrentQuestion = ("\"" + rouListOfRounds[intRoundCurrent].queCurrentQuestion.strQuoteText + "\"");
-                View.strRadAnswer1 = GetRadioPositionsOneText();
-                View.strRadAnswer2 = GetRadioPositionsTwoText();
-                View.strRadAnswer3 = GetRadioPositionsThreeText();
-            }
-        }
 
         public string GetRadioPositionsOneText()
         {
@@ -258,9 +258,6 @@ namespace MovieQuoteQuiz
                 return "Error - no position 3";
             }
         }
-
-
-
 
         public int GetRandomQuestionNumber()
         {

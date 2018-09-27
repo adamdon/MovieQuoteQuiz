@@ -18,6 +18,7 @@ namespace MovieQuoteQuiz
             Database.gamCurrentGame.SetPlayer();
             Database.gamCurrentGame.SetupRounds();
             Database.gamCurrentGame.PopulateViewWithRound();
+            Database.gamCurrentGame.PopulateViewWithPlayer();
 
             View.isbtnNewGamebuttonActive = false;
             View.isbtnSubmitAnswerActive = true;
