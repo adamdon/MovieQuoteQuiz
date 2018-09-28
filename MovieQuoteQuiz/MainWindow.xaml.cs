@@ -35,11 +35,11 @@ namespace MovieQuoteQuiz
         {
             if (cmbRoundsAmount.SelectedIndex == 0)
             {
-                Controller.StartNewGame(txtPlayerNameTextBox.Text.ToString(), 5);
+                Controller.StartNewGame(cmbPlayerNameTextBox.Text.ToString(), 5);
             }
             else if (cmbRoundsAmount.SelectedIndex == 1)
             {
-                Controller.StartNewGame(txtPlayerNameTextBox.Text.ToString(), 6);
+                Controller.StartNewGame(cmbPlayerNameTextBox.Text.ToString(), 6);
             }
 
             PopulateFieldsWithView();
@@ -89,5 +89,7 @@ namespace MovieQuoteQuiz
             btnTestbutton.IsEnabled = View.isbtnNewGamebuttonActive;
             gruQuizGroupBox.IsEnabled = View.isgruQuizGroupBoxActive;
         }
+
+
     }
 }

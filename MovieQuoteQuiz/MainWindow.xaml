@@ -62,7 +62,7 @@
                 <Label x:Name="lblTotalPoints" Content="0" HorizontalAlignment="Left" Margin="164,70,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.78,1.128"/>
             </Grid>
         </GroupBox>
-        <TextBox x:Name="txtPlayerNameTextBox" HorizontalAlignment="Left" Height="23" Margin="343,20,0,0" TextWrapping="Wrap" Text="PlayerName" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cmbPlayerNameTextBox" IsEditable="True" HorizontalAlignment="Left" Height="23" Margin="343,20,0,0" Text="PlayerName" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="cmbRoundsAmount" HorizontalAlignment="Left" Margin="477,20,0,0" VerticalAlignment="Top" Width="92">
             <ComboBoxItem IsSelected="True">5 Rounds</ComboBoxItem>
             <ComboBoxItem>6 Rounds</ComboBoxItem>

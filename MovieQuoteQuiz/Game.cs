@@ -89,8 +89,15 @@ namespace MovieQuoteQuiz
 
         public void PopulateViewWithPlayer()
         {
+            double dubPercentageCorrect = (((double)plaCurrentPlayer.intTotalCorrectQuestions / (double)plaCurrentPlayer.intTotalRoundsPlayed) * 100);
+            dubPercentageCorrect = Math.Round(dubPercentageCorrect, 2);
+            if (Double.IsNaN(dubPercentageCorrect))
+            {
+                dubPercentageCorrect = 0;
+            }
+
             View.strlblPlayerName = plaCurrentPlayer.strUsername;
-            View.strlblPercentageCorrect = ((((double)plaCurrentPlayer.intTotalCorrectQuestions / (double)plaCurrentPlayer.intTotalRoundsPlayed) * 100).ToString() + "%");
+            View.strlblPercentageCorrect = (dubPercentageCorrect.ToString() + "%");
             View.strlblTotalPoints = plaCurrentPlayer.intintTotalPointsAllGames.ToString();
         }
 
