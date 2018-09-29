@@ -22,5 +22,10 @@ namespace MovieQuoteQuiz
             intintTotalPointsAllGames = 0;
         }
 
+        public override string ToString()
+        {
+            return this.strUsername;
+        }
+
     }
 }

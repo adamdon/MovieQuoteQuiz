@@ -25,8 +25,11 @@ namespace MovieQuoteQuiz
 
         public MainWindow()
         {
-            Controller.SetupApplication();
+            Controller.SetupApplication();          
             InitializeComponent();
+
+            cmbPlayerNameTextBox.ItemsSource = Database.plaListOfPlayers;
+            cmbPlayerNameTextBox.DisplayMemberPath = "strUsername";
 
             PopulateFieldsWithView();
         }

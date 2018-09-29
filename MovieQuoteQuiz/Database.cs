@@ -136,6 +136,15 @@ namespace MovieQuoteQuiz
             queListOfQuestionsTemp.Add(queQuestion4);
             queListOfQuestionsTemp.Add(queQuestion5);
             queListOfQuestionsTemp.Add(queQuestion6);
+
+            Player plaTestPlayer1 = new Player("Test1");
+            Player plaTestPlayer2 = new Player("Test2");
+            Player plaTestPlayer3 = new Player("Test3");
+
+            plaListOfPlayers.Add(plaTestPlayer1);
+            plaListOfPlayers.Add(plaTestPlayer2);
+            plaListOfPlayers.Add(plaTestPlayer3);
+
         }
 
 
