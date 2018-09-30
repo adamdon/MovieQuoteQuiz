@@ -101,6 +101,9 @@ namespace MovieQuoteQuiz
             View.strlblTotalPoints = plaCurrentPlayer.intintTotalPointsAllGames.ToString();
         }
 
+        //to replace non static method soon
+
+
         public void PopulateViewWithScore()
         {
             View.strlblCurrentRound = ((intRoundCurrent + 1) + "/" + intRoundsTotal);

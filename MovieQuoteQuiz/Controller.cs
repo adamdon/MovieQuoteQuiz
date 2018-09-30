@@ -46,6 +46,33 @@ namespace MovieQuoteQuiz
         }
 
 
+        public static void PopulateViewWithPlayer(Player plaPlayerToPopulate)
+        {
+            double dubPercentageCorrect = (((double)plaPlayerToPopulate.intTotalCorrectQuestions / (double)plaPlayerToPopulate.intTotalRoundsPlayed) * 100);
+            dubPercentageCorrect = Math.Round(dubPercentageCorrect, 2);
+            if (Double.IsNaN(dubPercentageCorrect))
+            {
+                dubPercentageCorrect = 0;
+            }
+
+            View.strlblPlayerName = plaPlayerToPopulate.strUsername;
+            View.strlblPercentageCorrect = (dubPercentageCorrect.ToString() + "%");
+            View.strlblTotalPoints = plaPlayerToPopulate.intintTotalPointsAllGames.ToString();
+        }
+
+        public static Player GetPlayerFromList(string strPlayerNameTemp)
+        {
+            foreach (Player plaPlayerIndex in Database.plaListOfPlayers)
+            {
+                if (plaPlayerIndex.strUsername == strPlayerNameTemp)
+                {
+                    View.UpdateStatusBarError("Player " + strPlayerNameTemp + " not new");
+                    return plaPlayerIndex;
+                }
+            }
+            return new Player("Error");
+        }
+
 
     }
 }

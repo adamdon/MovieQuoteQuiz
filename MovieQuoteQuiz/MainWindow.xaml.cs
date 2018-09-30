@@ -93,6 +93,15 @@ namespace MovieQuoteQuiz
             gruQuizGroupBox.IsEnabled = View.isgruQuizGroupBoxActive;
         }
 
+        private void cmbPlayerNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Controller.PopulateViewWithPlayer(Controller.GetPlayerFromList(cmbPlayerNameTextBox.Text.ToString()));
+            PopulateFieldsWithView();
+        }
 
+        private void cmbPlayerNameTextBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
