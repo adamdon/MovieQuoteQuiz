@@ -27,5 +27,61 @@ namespace MovieQuoteQuiz
             return this.strUsername;
         }
 
+        public static Player GetPlayer(string strPlayerNameTemp)
+        {
+            Player plaCurrentPlayer;
+
+            if (IsPlayerNew(strPlayerNameTemp) == true)
+            {
+                plaCurrentPlayer = new Player(strPlayerNameTemp);
+                Database.plaListOfPlayers.Add(plaCurrentPlayer);
+            }
+            else
+            {
+                plaCurrentPlayer = Player.GetPlayerFromList(strPlayerNameTemp);
+            }
+
+            return plaCurrentPlayer;
+        }
+
+        public static bool IsPlayerNew(string strPlayerNameTemp)
+        {
+            foreach (Player plaPlayerIndex in Database.plaListOfPlayers)
+            {
+                if (plaPlayerIndex.strUsername == strPlayerNameTemp)
+                {
+                    View.UpdateStatusBarError("Player " + strPlayerNameTemp + " not new");
+                    return false;
+                }
+            }
+            View.UpdateStatusBarError("Player " + strPlayerNameTemp + " added to db");
+            return true;
+        }
+
+        public static Player GetPlayerFromList(string strPlayerNameTemp)
+        {
+            foreach (Player plaPlayerIndex in Database.plaListOfPlayers)
+            {
+                if (plaPlayerIndex.strUsername == strPlayerNameTemp)
+                {
+                    View.UpdateStatusBarError("Player " + strPlayerNameTemp + " not new");
+                    return plaPlayerIndex;
+                }
+            }
+            return new Player("Error");
+        }
+
+        public static Player UpdatePlayer(Player plaPlayerToBeUpdated, int intTotalPoints, int intCorrectQuestions, int intRoundsTotal)
+        {
+            plaPlayerToBeUpdated.intintTotalPointsAllGames = (plaPlayerToBeUpdated.intintTotalPointsAllGames + intTotalPoints);
+            plaPlayerToBeUpdated.intTotalCorrectQuestions = (plaPlayerToBeUpdated.intTotalCorrectQuestions + intCorrectQuestions);
+            plaPlayerToBeUpdated.intTotalRoundsPlayed = (plaPlayerToBeUpdated.intTotalRoundsPlayed + intRoundsTotal);
+
+            int intIndexOfPlayerItem = Database.plaListOfPlayers.IndexOf(plaPlayerToBeUpdated);
+            Database.plaListOfPlayers.Insert(intIndexOfPlayerItem, plaPlayerToBeUpdated); //to be removed when interface is in place
+
+            return plaPlayerToBeUpdated;
+        }
+
     }
 }

@@ -12,17 +12,12 @@ namespace MovieQuoteQuiz
 
         public static void StartNewGame(string strPlayerName, int intRoundsTotal)
         {
-            View.SetupDefultValues();
+            //View.SetupDefultValues();
 
             Database.gamCurrentGame = new Game(strPlayerName, intRoundsTotal);
             Database.gamCurrentGame.Run();
 
-            View.isbtnNewGamebuttonActive = false;
-            View.isbtnSubmitAnswerActive = true;
-            View.isgruQuizGroupBoxActive = true;
 
-            View.strlblCurrentRound = ("1/" + intRoundsTotal);
-            View.UpdateStatusBar(0, (strPlayerName + "'s game setup with " + intRoundsTotal + " rounds"));
 
         }
 

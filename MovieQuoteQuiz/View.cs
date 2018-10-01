@@ -33,6 +33,27 @@ namespace MovieQuoteQuiz
 
         public static bool isgruQuizGroupBoxActive = false;
 
+        public static void PopulateViewWithPlayer(Player plaPlayerToPopulate)
+        {
+            double dubPercentageCorrect = (((double)plaPlayerToPopulate.intTotalCorrectQuestions / (double)plaPlayerToPopulate.intTotalRoundsPlayed) * 100);
+            dubPercentageCorrect = Math.Round(dubPercentageCorrect, 2);
+            if (Double.IsNaN(dubPercentageCorrect))
+            {
+                dubPercentageCorrect = 0;
+            }
+
+            View.strlblPlayerName = plaPlayerToPopulate.strUsername;
+            View.strlblPercentageCorrect = (dubPercentageCorrect.ToString() + "%");
+            View.strlblTotalPoints = plaPlayerToPopulate.intintTotalPointsAllGames.ToString();
+        }
+
+        public static void PopulateViewWithScore(int intRoundCurrent, int intRoundsTotal, int intCorrectQuestions, int intTotalPoints)
+        {
+            View.strlblCurrentRound = ((intRoundCurrent + 1) + "/" + intRoundsTotal);
+            View.strlblCorrectAnswers = intCorrectQuestions.ToString();
+            View.strlblGamePoints = intTotalPoints.ToString();
+        }
+
         public static void UpdateStatusBar(int intTotalPoints, string strMessage)
         {
             strlblStatusBar = "Points: " + intTotalPoints + " - " + strMessage;

@@ -46,10 +46,16 @@ namespace MovieQuoteQuiz
 
         public void Run()
         {
-            SetPlayer();
+            plaCurrentPlayer = Player.GetPlayer(strPlayerName);
             SetupRounds();
             PopulateViewWithRound();
-            PopulateViewWithPlayer();
+            View.PopulateViewWithPlayer(plaCurrentPlayer);
+            View.PopulateViewWithScore(intRoundCurrent, intRoundsTotal, intCorrectQuestions, intTotalPoints);
+
+            View.isbtnNewGamebuttonActive = false;
+            View.isbtnSubmitAnswerActive = true;
+            View.isgruQuizGroupBoxActive = true;
+
         }
 
 
@@ -79,14 +85,14 @@ namespace MovieQuoteQuiz
                 EndGame();
             }
 
-            PopulateViewWithScore();
+            View.PopulateViewWithScore(intRoundCurrent, intRoundsTotal, intCorrectQuestions, intTotalPoints);
         }
 
 
         public void EndGame()
         {
-            UpdatePlayer();
-            PopulateViewWithPlayer();
+            plaCurrentPlayer = Player.UpdatePlayer(plaCurrentPlayer, intTotalPoints, intCorrectQuestions, intRoundsTotal);
+            View.PopulateViewWithPlayer(plaCurrentPlayer);
 
             isGameInProgress = false;
             View.UpdateStatusBar(intTotalPoints, "Game End!");
@@ -95,29 +101,6 @@ namespace MovieQuoteQuiz
             View.SetupDefultValues();
         }
 
-        public void PopulateViewWithPlayer()
-        {
-            double dubPercentageCorrect = (((double)plaCurrentPlayer.intTotalCorrectQuestions / (double)plaCurrentPlayer.intTotalRoundsPlayed) * 100);
-            dubPercentageCorrect = Math.Round(dubPercentageCorrect, 2);
-            if (Double.IsNaN(dubPercentageCorrect))
-            {
-                dubPercentageCorrect = 0;
-            }
-
-            View.strlblPlayerName = plaCurrentPlayer.strUsername;
-            View.strlblPercentageCorrect = (dubPercentageCorrect.ToString() + "%");
-            View.strlblTotalPoints = plaCurrentPlayer.intintTotalPointsAllGames.ToString();
-        }
-
-        //to replace non static method soon
-
-
-        public void PopulateViewWithScore()
-        {
-            View.strlblCurrentRound = ((intRoundCurrent + 1) + "/" + intRoundsTotal);
-            View.strlblCorrectAnswers = intCorrectQuestions.ToString();
-            View.strlblGamePoints = intTotalPoints.ToString();
-        }
 
         public void PopulateViewWithRound()
         {
@@ -131,57 +114,6 @@ namespace MovieQuoteQuiz
             }
         }
 
-        public void SetPlayer()
-        {
-            if (IsPlayerNew(strPlayerName) == true)
-            {
-                plaCurrentPlayer = new Player(strPlayerName);
-                Database.plaListOfPlayers.Add(plaCurrentPlayer);
-            }
-            else
-            {
-                plaCurrentPlayer = GetPlayerFromList(strPlayerName);
-            }
-        }
-
-        public bool IsPlayerNew(string strPlayerNameTemp)
-        {
-            foreach (Player plaPlayerIndex in Database.plaListOfPlayers)
-            {
-                if (plaPlayerIndex.strUsername == strPlayerNameTemp)
-                {
-                    View.UpdateStatusBarError("Player " + strPlayerName + " not new");
-                    return false;
-                }
-            }
-            View.UpdateStatusBarError("Player " + strPlayerName + " added to db");
-            return true;
-        }
-
-        public void UpdatePlayer()
-        {
-            plaCurrentPlayer.intintTotalPointsAllGames = (plaCurrentPlayer.intintTotalPointsAllGames + intTotalPoints);
-            plaCurrentPlayer.intTotalCorrectQuestions = (plaCurrentPlayer.intTotalCorrectQuestions + intCorrectQuestions);
-            plaCurrentPlayer.intTotalRoundsPlayed = (plaCurrentPlayer.intTotalRoundsPlayed + intRoundsTotal);
-
-            int intIndexOfPlayerItem = Database.plaListOfPlayers.IndexOf(plaCurrentPlayer);
-            Database.plaListOfPlayers.Insert(intIndexOfPlayerItem, plaCurrentPlayer);
-        }
-
-
-
-        public Player GetPlayerFromList(string strPlayerNameTemp)
-        {
-            foreach (Player plaPlayerIndex in Database.plaListOfPlayers)
-            {
-                if (plaPlayerIndex.strUsername == strPlayerNameTemp)
-                {
-                    View.UpdateStatusBarError("Player " + strPlayerName + " not new");
-                    return plaPlayerIndex;
-                }
-            }
-            return new Player("Error");
-        }
 
         public void SetupRounds()
         {
