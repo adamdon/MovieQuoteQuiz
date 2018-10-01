@@ -44,6 +44,14 @@ namespace MovieQuoteQuiz
 
         }
 
+        public void Run()
+        {
+            SetPlayer();
+            SetupRounds();
+            PopulateViewWithRound();
+            PopulateViewWithPlayer();
+        }
+
 
         public void SubmitAnswer(int intSelectedRadio)
         {

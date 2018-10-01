@@ -15,10 +15,7 @@ namespace MovieQuoteQuiz
             View.SetupDefultValues();
 
             Database.gamCurrentGame = new Game(strPlayerName, intRoundsTotal);
-            Database.gamCurrentGame.SetPlayer();
-            Database.gamCurrentGame.SetupRounds();
-            Database.gamCurrentGame.PopulateViewWithRound();
-            Database.gamCurrentGame.PopulateViewWithPlayer();
+            Database.gamCurrentGame.Run();
 
             View.isbtnNewGamebuttonActive = false;
             View.isbtnSubmitAnswerActive = true;
@@ -70,7 +67,7 @@ namespace MovieQuoteQuiz
                     return plaPlayerIndex;
                 }
             }
-            return new Player("Error");
+            return new Player(strPlayerNameTemp);
         }
 
 
