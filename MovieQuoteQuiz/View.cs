@@ -54,6 +54,19 @@ namespace MovieQuoteQuiz
             View.strlblGamePoints = intTotalPoints.ToString();
         }
 
+        public static void PopulateViewWithRound(List<Round> CurrentListOfRounds, int intRoundCurrent, bool isGameInProgress)
+        {
+            if (isGameInProgress == true)
+            {
+                View.strLblQuestioRoundText = ("Question: " + (intRoundCurrent + 1));
+                View.strLblCurrentQuestion = ("\"" + CurrentListOfRounds[intRoundCurrent].queCurrentQuestion.strQuoteText + "\"");
+
+                View.strRadAnswer1 = Round.GetRadioPositionsText(CurrentListOfRounds, intRoundCurrent, 1);
+                View.strRadAnswer2 = Round.GetRadioPositionsText(CurrentListOfRounds, intRoundCurrent, 2);
+                View.strRadAnswer3 = Round.GetRadioPositionsText(CurrentListOfRounds, intRoundCurrent, 3);
+            }
+        }
+
         public static void UpdateStatusBar(int intTotalPoints, string strMessage)
         {
             strlblStatusBar = "Points: " + intTotalPoints + " - " + strMessage;

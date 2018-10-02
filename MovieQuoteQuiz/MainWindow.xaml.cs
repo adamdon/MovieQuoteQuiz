@@ -95,7 +95,7 @@ namespace MovieQuoteQuiz
 
         private void cmbPlayerNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Controller.PopulateViewWithPlayer(Controller.GetPlayerFromList(cmbPlayerNameTextBox.Text.ToString()));
+            Controller.PlayerNameTextBox_TextChanged(cmbPlayerNameTextBox.Text.ToString());
             PopulateFieldsWithView();
         }
 
