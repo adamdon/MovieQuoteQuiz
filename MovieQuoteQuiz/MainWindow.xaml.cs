@@ -91,6 +91,7 @@ namespace MovieQuoteQuiz
             btnSubmitAnswer.IsEnabled = View.isbtnSubmitAnswerActive;
             btnTestbutton.IsEnabled = View.isbtnNewGamebuttonActive;
             gruQuizGroupBox.IsEnabled = View.isgruQuizGroupBoxActive;
+            gruScoreGroupBox.IsEnabled = View.isgruScoreGroupBoxActive;
         }
 
         private void cmbPlayerNameTextBox_TextChanged(object sender, TextChangedEventArgs e)

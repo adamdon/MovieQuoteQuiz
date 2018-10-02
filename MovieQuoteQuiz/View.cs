@@ -32,6 +32,7 @@ namespace MovieQuoteQuiz
         public static bool isbtnNewGamebuttonActive = true;
 
         public static bool isgruQuizGroupBoxActive = false;
+        public static bool isgruScoreGroupBoxActive = false;
 
         public static void PopulateViewWithPlayer(Player plaPlayerToPopulate)
         {
@@ -64,6 +65,24 @@ namespace MovieQuoteQuiz
                 View.strRadAnswer1 = Round.GetRadioPositionsText(CurrentListOfRounds, intRoundCurrent, 1);
                 View.strRadAnswer2 = Round.GetRadioPositionsText(CurrentListOfRounds, intRoundCurrent, 2);
                 View.strRadAnswer3 = Round.GetRadioPositionsText(CurrentListOfRounds, intRoundCurrent, 3);
+            }
+        }
+
+        public static void ActivateGameStateInView(bool isGameInProgress)
+        {
+            if (isGameInProgress == true)
+            {
+                View.isbtnNewGamebuttonActive = false;
+                View.isbtnSubmitAnswerActive = true;
+                View.isgruQuizGroupBoxActive = true;
+                View.isgruScoreGroupBoxActive = true;
+            }
+            else
+            {
+                View.isbtnNewGamebuttonActive = true;
+                View.isbtnSubmitAnswerActive = false;
+                View.isgruQuizGroupBoxActive = false;
+                View.isgruScoreGroupBoxActive = false;
             }
         }
 
@@ -101,6 +120,7 @@ namespace MovieQuoteQuiz
             isbtnSubmitAnswerActive = false;
             isbtnNewGamebuttonActive = true;
             isgruQuizGroupBoxActive = false;
+            isgruScoreGroupBoxActive = false;
         }
     }
 }

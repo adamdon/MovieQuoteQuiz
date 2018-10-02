@@ -8,12 +8,6 @@ namespace MovieQuoteQuiz
 {
     class Game
     {
-        //public static Random ranRandomNumber = new Random();
-
-        //public static List<int> intListOfUsedQuestions; // = new List<int>();
-        //public static List<int> intListOfUsedAnswers; // = new List<int>();
-        //public static List<int> intListOfUsedRadioPositions;
-
         public static List<Round> rouListOfRounds;
 
         public static string strPlayerName;
@@ -37,10 +31,6 @@ namespace MovieQuoteQuiz
             isGameInProgress = true;
 
             rouListOfRounds = new List<Round>();
-            //intListOfUsedQuestions = new List<int>();
-            //intListOfUsedAnswers = new List<int>();
-            //intListOfUsedRadioPositions = new List<int>();
-
         }
 
         public void Run()
@@ -51,9 +41,7 @@ namespace MovieQuoteQuiz
             View.PopulateViewWithPlayer(plaCurrentPlayer);
             View.PopulateViewWithScore(intRoundCurrent, intRoundsTotal, intCorrectQuestions, intTotalPoints);
 
-            View.isbtnNewGamebuttonActive = false;
-            View.isbtnSubmitAnswerActive = true;
-            View.isgruQuizGroupBoxActive = true;
+            View.ActivateGameStateInView(isGameInProgress);
 
         }
 
@@ -66,15 +54,12 @@ namespace MovieQuoteQuiz
                 intCorrectQuestions = intCorrectQuestions + 1;
                 intTotalPoints = intTotalPoints + 10;
                 View.UpdateStatusBar(intTotalPoints, "Correct!");
-                View.PopulateViewWithRound(rouListOfRounds, intRoundCurrent, isGameInProgress);
                 
             }
             else
             {
                 intTotalPoints = intTotalPoints - 5;
-                View.UpdateStatusBar(intTotalPoints, "Wrong");
-                View.PopulateViewWithRound(rouListOfRounds, intRoundCurrent, isGameInProgress);
-           
+                View.UpdateStatusBar(intTotalPoints, "Wrong");     
             }
 
             if (intRoundCurrent < (intRoundsTotal - 1))
@@ -85,7 +70,7 @@ namespace MovieQuoteQuiz
             {  
                 EndGame();
             }
-
+            View.PopulateViewWithRound(rouListOfRounds, intRoundCurrent, isGameInProgress);
             View.PopulateViewWithScore(intRoundCurrent, intRoundsTotal, intCorrectQuestions, intTotalPoints);
         }
 
@@ -97,8 +82,7 @@ namespace MovieQuoteQuiz
 
             isGameInProgress = false;
             View.UpdateStatusBar(intTotalPoints, "Game End!");
-            View.isbtnSubmitAnswerActive = false;
-            View.isbtnNewGamebuttonActive = true;
+            View.ActivateGameStateInView(isGameInProgress);
             View.SetupDefultValues();
         }
 
