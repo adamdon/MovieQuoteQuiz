@@ -31,6 +31,9 @@ namespace MovieQuoteQuiz
         public static bool isbtnSubmitAnswerActive = false;
         public static bool isbtnNewGamebuttonActive = true;
 
+        public static bool iscmbPlayerNameTextBoxtActive = true;
+        public static bool iscmbRoundsAmountActive = true;
+
         public static bool isgruQuizGroupBoxActive = false;
         public static bool isgruScoreGroupBoxActive = false;
 
@@ -73,6 +76,8 @@ namespace MovieQuoteQuiz
             if (isGameInProgress == true)
             {
                 View.isbtnNewGamebuttonActive = false;
+                View.iscmbPlayerNameTextBoxtActive = false;
+                View.iscmbRoundsAmountActive = false;
                 View.isbtnSubmitAnswerActive = true;
                 View.isgruQuizGroupBoxActive = true;
                 View.isgruScoreGroupBoxActive = true;
@@ -80,6 +85,8 @@ namespace MovieQuoteQuiz
             else
             {
                 View.isbtnNewGamebuttonActive = true;
+                View.iscmbPlayerNameTextBoxtActive = true;
+                View.iscmbRoundsAmountActive = true;
                 View.isbtnSubmitAnswerActive = false;
                 View.isgruQuizGroupBoxActive = false;
                 View.isgruScoreGroupBoxActive = false;
@@ -121,6 +128,8 @@ namespace MovieQuoteQuiz
             isbtnNewGamebuttonActive = true;
             isgruQuizGroupBoxActive = false;
             isgruScoreGroupBoxActive = false;
+            iscmbPlayerNameTextBoxtActive = true;
+            iscmbRoundsAmountActive = true;
         }
     }
 }

@@ -28,8 +28,8 @@ namespace MovieQuoteQuiz
             Controller.SetupApplication();          
             InitializeComponent();
 
-            cmbPlayerNameTextBox.ItemsSource = Database.plaListOfPlayers;
-            cmbPlayerNameTextBox.DisplayMemberPath = "strUsername";
+            //cmbPlayerNameTextBox.ItemsSource = Database.plaListOfPlayers;
+            //cmbPlayerNameTextBox.DisplayMemberPath = "strUsername";
 
             PopulateFieldsWithView();
         }
@@ -92,17 +92,22 @@ namespace MovieQuoteQuiz
             btnTestbutton.IsEnabled = View.isbtnNewGamebuttonActive;
             gruQuizGroupBox.IsEnabled = View.isgruQuizGroupBoxActive;
             gruScoreGroupBox.IsEnabled = View.isgruScoreGroupBoxActive;
+            cmbPlayerNameTextBox.IsEnabled = View.iscmbPlayerNameTextBoxtActive;
+            cmbRoundsAmount.IsEnabled = View.iscmbRoundsAmountActive;
+
+            cmbPlayerNameTextBox.ItemsSource = Database.plaListOfPlayers;
+            cmbPlayerNameTextBox.DisplayMemberPath = "strUsername";
         }
 
-        private void cmbPlayerNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            Controller.PlayerNameTextBox_TextChanged(cmbPlayerNameTextBox.Text.ToString());
-            PopulateFieldsWithView();
-        }
+        //private void cmbPlayerNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    Controller.PlayerNameTextBox_TextChanged(cmbPlayerNameTextBox.Text.ToString());
+        //    PopulateFieldsWithView();
+        //}  // TextBoxBase.TextChanged="cmbPlayerNameTextBox_TextChanged"
 
-        private void cmbPlayerNameTextBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        //private void cmbPlayerNameTextBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
 
-        }
+        //}  // SelectionChanged="cmbPlayerNameTextBox_SelectionChanged"
     }
 }
