@@ -37,6 +37,7 @@ namespace MovieQuoteQuiz
         {
             plaCurrentPlayer = Player.GetPlayer(strPlayerName);
             rouListOfRounds = Round.SetupRounds(intRoundsTotal);
+
             View.PopulateViewWithRound(rouListOfRounds, intRoundCurrent, isGameInProgress); ;
             View.PopulateViewWithPlayer(plaCurrentPlayer);
             View.PopulateViewWithScore(intRoundCurrent, intRoundsTotal, intCorrectQuestions, intTotalPoints);
@@ -48,30 +49,44 @@ namespace MovieQuoteQuiz
 
         public void SubmitAnswer(int intSelectedRadio)
         {
-          
             if (intSelectedRadio == rouListOfRounds[intRoundCurrent].intCorrectRadio)
             {
-                intCorrectQuestions = intCorrectQuestions + 1;
-                intTotalPoints = intTotalPoints + 10;
-                View.UpdateStatusBar(intTotalPoints, "Correct!");
-                
+                CorrectAnswer();
             }
             else
             {
-                intTotalPoints = intTotalPoints - 5;
-                View.UpdateStatusBar(intTotalPoints, "Wrong");     
+                WrongAnswer();
             }
 
+            EndRound();
+        }
+
+        public void EndRound()
+        {
             if (intRoundCurrent < (intRoundsTotal - 1))
             {
                 intRoundCurrent = intRoundCurrent + 1;
             }
             else
-            {  
+            {
                 EndGame();
             }
+
             View.PopulateViewWithRound(rouListOfRounds, intRoundCurrent, isGameInProgress);
             View.PopulateViewWithScore(intRoundCurrent, intRoundsTotal, intCorrectQuestions, intTotalPoints);
+        }
+
+        public void CorrectAnswer()
+        {
+            intCorrectQuestions = intCorrectQuestions + 1;
+            intTotalPoints = intTotalPoints + 10;
+            View.UpdateStatusBar(intTotalPoints, "Correct!");
+        }
+
+        public void WrongAnswer()
+        {
+            intTotalPoints = intTotalPoints - 5;
+            View.UpdateStatusBar(intTotalPoints, "Wrong");
         }
 
 
