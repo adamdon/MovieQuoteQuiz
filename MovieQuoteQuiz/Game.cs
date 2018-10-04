@@ -92,7 +92,7 @@ namespace MovieQuoteQuiz
 
         public void EndGame()
         {
-            plaCurrentPlayer = Player.UpdatePlayer(plaCurrentPlayer, intTotalPoints, intCorrectQuestions, intRoundsTotal);
+            plaCurrentPlayer = Player.UpdatePlayer(plaCurrentPlayer, intTotalPoints, intCorrectQuestions, intRoundsTotal, strPlayerName);
             View.PopulateViewWithPlayer(plaCurrentPlayer);
 
             isGameInProgress = false;

@@ -27,20 +27,16 @@ namespace MovieQuoteQuiz
         {
             Controller.SetupApplication();          
             InitializeComponent();
-
-            //cmbPlayerNameTextBox.ItemsSource = Database.plaListOfPlayers;
-            //cmbPlayerNameTextBox.DisplayMemberPath = "strUsername";
-
             PopulateFieldsWithView();
         }
 
         private void btnNewGamebutton_Click(object sender, RoutedEventArgs e)
         {
-            if (cmbRoundsAmount.SelectedIndex == 0)
+            if ((cmbRoundsAmount.SelectedIndex == 0) && (cmbPlayerNameTextBox.Text.ToString() != ""))
             {
                 Controller.StartNewGame(cmbPlayerNameTextBox.Text.ToString(), 5);
             }
-            else if (cmbRoundsAmount.SelectedIndex == 1)
+            else if ((cmbRoundsAmount.SelectedIndex == 1) && (cmbPlayerNameTextBox.Text.ToString() != ""))
             {
                 Controller.StartNewGame(cmbPlayerNameTextBox.Text.ToString(), 6);
             }
@@ -95,6 +91,7 @@ namespace MovieQuoteQuiz
             cmbPlayerNameTextBox.IsEnabled = View.iscmbPlayerNameTextBoxtActive;
             cmbRoundsAmount.IsEnabled = View.iscmbRoundsAmountActive;
 
+            cmbPlayerNameTextBox.ItemsSource = null;
             cmbPlayerNameTextBox.ItemsSource = Database.plaListOfPlayers;
             cmbPlayerNameTextBox.DisplayMemberPath = "strUsername";
         }

@@ -71,14 +71,29 @@ namespace MovieQuoteQuiz
             return new Player("Error");
         }
 
-        public static Player UpdatePlayer(Player plaPlayerToBeUpdated, int intTotalPoints, int intCorrectQuestions, int intRoundsTotal)
+        public static int GetPlayerIndexOfList(string strPlayerNameTemp)
+        {
+            int intIndexOfPlayerItem = 0;
+
+            foreach (Player plaPlayerIndex in Database.plaListOfPlayers)
+            {
+                if (plaPlayerIndex.strUsername == strPlayerNameTemp)
+                {
+                    intIndexOfPlayerItem = Database.plaListOfPlayers.IndexOf(plaPlayerIndex);
+                    return intIndexOfPlayerItem;
+                }
+            }
+            return intIndexOfPlayerItem;
+        }
+
+        public static Player UpdatePlayer(Player plaPlayerToBeUpdated, int intTotalPoints, int intCorrectQuestions, int intRoundsTotal, string strPlayerName)
         {
             plaPlayerToBeUpdated.intintTotalPointsAllGames = (plaPlayerToBeUpdated.intintTotalPointsAllGames + intTotalPoints);
             plaPlayerToBeUpdated.intTotalCorrectQuestions = (plaPlayerToBeUpdated.intTotalCorrectQuestions + intCorrectQuestions);
             plaPlayerToBeUpdated.intTotalRoundsPlayed = (plaPlayerToBeUpdated.intTotalRoundsPlayed + intRoundsTotal);
 
-            int intIndexOfPlayerItem = Database.plaListOfPlayers.IndexOf(plaPlayerToBeUpdated);
-            Database.plaListOfPlayers.Insert(intIndexOfPlayerItem, plaPlayerToBeUpdated); //to be removed when interface is in place
+            int intIndexOfPlayerItem = GetPlayerIndexOfList(strPlayerName);
+            Database.plaListOfPlayers[intIndexOfPlayerItem] = plaPlayerToBeUpdated; //to be removed when interface is in place
 
             return plaPlayerToBeUpdated;
         }
