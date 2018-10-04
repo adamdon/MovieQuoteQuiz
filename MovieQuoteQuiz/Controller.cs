@@ -14,6 +14,8 @@ namespace MovieQuoteQuiz
         {
             Database.gamCurrentGame = new Game(strPlayerName, intRoundsTotal);
             Database.gamCurrentGame.Run();
+
+            DEBUGPrintStatisBarWithPlayerArray();
         }
 
         public static void SubmitAnswer(int intSelectedRadio)
@@ -34,6 +36,19 @@ namespace MovieQuoteQuiz
         public static  void PlayerNameTextBox_TextChanged(string strPlayerNameFromBox)
         {
             View.PopulateViewWithPlayer(Player.GetPlayerFromList(strPlayerNameFromBox));
+        }
+
+        public static void DEBUGPrintStatisBarWithPlayerArray()
+        {
+            string output = "";
+            foreach (Player plaPlayerIndex in Database.plaListOfPlayers)
+            {
+
+                output = (output + " " + plaPlayerIndex.strUsername);
+
+            }
+            View.UpdateStatusBarError(output);
+           
         }
 
 
