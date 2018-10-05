@@ -27,8 +27,8 @@
 
     <Grid Background="#000000">
         <!-- <Grid Background="#000000"> activate for blue gb -->
-        <Label x:Name="lblTestLable1" Style = "{StaticResource myLabelStyleMedium}" Content="Click to start" HorizontalAlignment="Left" Margin="19,10,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnTestbutton" Content="Start!" HorizontalAlignment="Left" Margin="198,20,0,0" VerticalAlignment="Top" Width="125" Click="btnNewGamebutton_Click"/>
+        <Label x:Name="lblTestLable1" Style = "{StaticResource myLabelStyleMedium}" Content="Click to start" HorizontalAlignment="Left" Margin="406,10,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnTestbutton" Content="Start!" HorizontalAlignment="Left" Margin="20,21,0,0" VerticalAlignment="Top" Width="125" Click="btnNewGamebutton_Click"/>
 
         <Label x:Name="lblStatusBar" Content="Status Bar" HorizontalAlignment="Left" Margin="19,395,0,0" VerticalAlignment="Top" Width="550"/>
         <GroupBox x:Name="gruQuizGroupBox" Header="Quiz"  Height="170" Width="550" HorizontalAlignment="Left" Margin="19,64,0,0" VerticalAlignment="Top">
@@ -62,14 +62,14 @@
                 <Label x:Name="lblTotalPoints" Content="0" HorizontalAlignment="Left" Margin="164,70,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.78,1.128"/>
             </Grid>
         </GroupBox>
-        <ComboBox x:Name="cmbPlayerNameTextBox"  DisplayMemberPath="plaListOfPlayers.strUsername" ItemsSource="{Binding Database.plaListOfPlayers}" IsEditable="True" HorizontalAlignment="Left" Height="23" Margin="343,20,0,0" VerticalAlignment="Top" Width="120" >
-        
+        <ComboBox x:Name="cmbPlayerNameTextBox" Controls:TextBoxHelper.Watermark="Enter Name" DisplayMemberPath="plaListOfPlayers.strUsername" ItemsSource="{Binding Database.plaListOfPlayers}" IsEditable="True" HorizontalAlignment="Left" Height="23" Margin="164,21,0,0" VerticalAlignment="Top" Width="120" >
+
         </ComboBox>
-        <ComboBox x:Name="cmbRoundsAmount" HorizontalAlignment="Left" Margin="477,20,0,0" VerticalAlignment="Top" Width="92">
+        <ComboBox x:Name="cmbRoundsAmount" HorizontalAlignment="Left" Margin="309,22,0,0" VerticalAlignment="Top" Width="92">
             <ComboBoxItem IsSelected="True">5 Rounds</ComboBoxItem>
             <ComboBoxItem>6 Rounds</ComboBoxItem>
         </ComboBox>
-        
+
     </Grid>
 
 </Controls:MetroWindow>
