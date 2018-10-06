@@ -28,6 +28,7 @@ namespace MovieQuoteQuiz
             View.SetupDefultValues();
 
             Database.SetupQuestions();
+
             Database.MakeSaveFile();
             Database.WriteToSaveFile();
             Database.ReadFromSaveFile();
