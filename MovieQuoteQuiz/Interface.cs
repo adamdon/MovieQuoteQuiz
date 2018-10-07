@@ -17,7 +17,7 @@ namespace MovieQuoteQuiz
         {
             try
             {
-                binWriteSave = new BinaryWriter(new FileStream("save.db", FileMode.Create));
+                binWriteSave = new BinaryWriter(new FileStream("save2.db", FileMode.Create));
             }
             catch (IOException e)
             {
@@ -25,7 +25,7 @@ namespace MovieQuoteQuiz
             }
         }
 
-        public static void WriteToSaveFile(List<object> lstListToBeWritten)
+        public static void WriteToSaveFile<T>(List<T> lstListToBeWritten)
         {
             try
             {
@@ -38,13 +38,14 @@ namespace MovieQuoteQuiz
             binWriteSave.Close();
         }
 
-        //public static List<object> ReadFromSaveFile()
+
+        //public static List<T> ReadFromSaveFile<T>(Type tpyObjectType)
         //{
-        //    List<object> lstListToBeRead;
+        //    List<typeof(tpyObjectType).FullName> = lstListToBeRead;
 
         //    try
         //    {
-        //        binReadSave = new BinaryReader(new FileStream("save.db", FileMode.Open));
+        //        binReadSave = new BinaryReader(new FileStream("save2.db", FileMode.Open));
         //    }
         //    catch (IOException e)
         //    {
@@ -53,15 +54,16 @@ namespace MovieQuoteQuiz
 
         //    try
         //    {
-        //        lstListToBeRead = DeserializeListFromBytes(GetArrayOfBytesFromBinaryReader());
+        //        lstListToBeRead = (List<tpyObjectType>)DeserializeListFromBytes(GetArrayOfBytesFromBinaryReader());
+        //        binReadSave.Close();
+
+        //        return lstListToBeRead;
         //    }
         //    catch (IOException e)
         //    {
         //        View.UpdateStatusBarError("Could not read Opened File - " + e.Message.ToString());
         //    }
-
-        //    binReadSave.Close();
-
+        //    lstListToBeRead = null;
         //    return lstListToBeRead;
         //}
 
@@ -96,19 +98,19 @@ namespace MovieQuoteQuiz
             }
         }
 
-        public static List<Object> DeserializeListFromBytes(byte[] bytes)
+        public static List<T> DeserializeListFromBytes<T>(byte[] bytes)
         {
             BinaryFormatter binFormatter = new BinaryFormatter();
             using (MemoryStream memStream = new MemoryStream(bytes))
             {
                 try
                 {
-                    return (List<Object>)binFormatter.Deserialize(memStream);
+                    return (List<T>)binFormatter.Deserialize(memStream);
                 }
                 catch (IOException e)
                 {
                     View.UpdateStatusBarError("Could not Deserialize List From Bytes - " + e.Message.ToString());
-                    return (List<Object>)binFormatter.Deserialize(memStream);
+                    return (List<T>)binFormatter.Deserialize(memStream);
                 }
 
 
