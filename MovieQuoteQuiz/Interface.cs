@@ -13,11 +13,40 @@ namespace MovieQuoteQuiz
         public static BinaryWriter binWriteSave;
         public static BinaryReader binReadSave;
 
-        public static void MakeSaveFile()
+
+        public static List<T> getSave<T>(List<T> lisDefultList)
         {
+            if (IsFilePresent<T>() == true)
+            {
+                return ReadFromSaveFile<T>();
+            }
+            else
+            {
+                MakeSaveFile<T>();
+                WriteToSaveFile<T>(lisDefultList);
+                return ReadFromSaveFile<T>();
+            }
+        }
+
+        public static bool IsFilePresent<T>()
+        {
+            string strSaveFileTypeName = (typeof(T).FullName + "Save.db");
+
+            if (File.Exists(strSaveFileTypeName))
+            {
+                return true;
+            }
+            return false;
+        }
+
+
+        public static void MakeSaveFile<T>()
+        {
+            string strSaveFileTypeName = (typeof(T).FullName + "Save.db");
+
             try
             {
-                binWriteSave = new BinaryWriter(new FileStream("save2.db", FileMode.Create));
+                binWriteSave = new BinaryWriter(new FileStream(strSaveFileTypeName, FileMode.Create));
             }
             catch (IOException e)
             {
@@ -39,38 +68,38 @@ namespace MovieQuoteQuiz
         }
 
 
-        //public static List<T> ReadFromSaveFile<T>(Type tpyObjectType)
-        //{
-        //    List<typeof(tpyObjectType).FullName> = lstListToBeRead;
+        public static List<T> ReadFromSaveFile<T>()
+        {
 
-        //    try
-        //    {
-        //        binReadSave = new BinaryReader(new FileStream("save2.db", FileMode.Open));
-        //    }
-        //    catch (IOException e)
-        //    {
-        //        View.UpdateStatusBarError("Could not Open File - " + e.Message.ToString());
-        //    }
+            List<T> lisListToBeRead = new List<T>();
+            string strSaveFileTypeName = (typeof(T).FullName + "Save.db");
 
-        //    try
-        //    {
-        //        lstListToBeRead = (List<tpyObjectType>)DeserializeListFromBytes(GetArrayOfBytesFromBinaryReader());
-        //        binReadSave.Close();
+            Type mytype = typeof(T);
+            try
+            {
+                binReadSave = new BinaryReader(new FileStream(strSaveFileTypeName, FileMode.Open));
+            }
+            catch (IOException e)
+            {
+                View.UpdateStatusBarError("Could not Open File - " + e.Message.ToString());
+            }
 
-        //        return lstListToBeRead;
-        //    }
-        //    catch (IOException e)
-        //    {
-        //        View.UpdateStatusBarError("Could not read Opened File - " + e.Message.ToString());
-        //    }
-        //    lstListToBeRead = null;
-        //    return lstListToBeRead;
-        //}
+            try
+            {
+                lisListToBeRead = DeserializeListFromBytes<T>(GetArrayOfBytesFromBinaryReader());
+            }
+            catch (IOException e)
+            {
+                View.UpdateStatusBarError("Could not read Opened File - " + e.Message.ToString());
+            }
+
+            binReadSave.Close();
+
+            return lisListToBeRead;
+        }
 
         public static byte[] GetArrayOfBytesFromBinaryReader()
         {
-            //byte[] allData2 = binReadSave.ReadBytes(10000);
-            //return AllData2
 
             const int intBufferSize = 4096;
             using (MemoryStream memSteamTemp = new MemoryStream())

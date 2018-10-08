@@ -14,6 +14,8 @@ namespace MovieQuoteQuiz
         {
             Database.gamCurrentGame = new Game(strPlayerName, intRoundsTotal);
             Database.gamCurrentGame.Run();
+
+            DEBUGPrintStatisBarWithPlayerArray(Database.plaListOfPlayers);
         }
 
         public static void SubmitAnswer(int intSelectedRadio)
@@ -25,16 +27,8 @@ namespace MovieQuoteQuiz
         {
             View.SetupDefultValues();
 
-            Database.SetupQuestions();
-
-            Database.MakeSaveFile();
-            Database.WriteToSaveFile();
-            Database.ReadFromSaveFile();
-
-            Interface.MakeSaveFile();
-            Interface.WriteToSaveFile(Database.queListOfQuestionsTemp);
-
-
+            Database.queListOfQuestions = Interface.getSave<Question>(Database.GetDefultQuestions());
+            Database.plaListOfPlayers = Interface.getSave<Player>(Database.GetDefultPlayers());
         }
 
         public static  void PlayerNameTextBox_TextChanged(string strPlayerNameFromBox)
@@ -42,18 +36,18 @@ namespace MovieQuoteQuiz
             View.PopulateViewWithPlayer(Player.GetPlayerFromList(strPlayerNameFromBox));
         }
 
-        //public static void DEBUGPrintStatisBarWithPlayerArray()
-        //{
-        //    string output = "";
-        //    foreach (Player plaPlayerIndex in Database.plaListOfPlayers)
-        //    {
+        public static void DEBUGPrintStatisBarWithPlayerArray(List<Player> plaListOfPlayers)
+        {
+            string output = "";
+            foreach (Player plaPlayerIndex in plaListOfPlayers)
+            {
 
-        //        output = (output + " " + plaPlayerIndex.strUsername);
+                output = (output + " " + plaPlayerIndex.strUsername);
 
-        //    }
-        //    View.UpdateStatusBarError(output);
+            }
+            View.UpdateStatusBarError(output);
 
-        //}
+        }
 
 
 
