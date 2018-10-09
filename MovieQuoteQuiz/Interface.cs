@@ -28,6 +28,18 @@ namespace MovieQuoteQuiz
             }
         }
 
+        public static void setSave<T>(List<T> lisToBeWrittenList)
+        {
+            if (IsFilePresent<T>() == true)
+            {
+                WriteToSaveFile<T>(lisToBeWrittenList);
+            }
+            else
+            {
+                //
+            }
+        }
+
         public static bool IsFilePresent<T>()
         {
             string strSaveFileTypeName = (typeof(T).FullName + "Save.db");
