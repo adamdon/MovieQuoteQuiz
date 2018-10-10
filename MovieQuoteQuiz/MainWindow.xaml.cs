@@ -34,11 +34,15 @@ namespace MovieQuoteQuiz
         {
             if ((cmbRoundsAmount.SelectedIndex == 0) && (cmbPlayerNameTextBox.Text.ToString() != ""))
             {
-                Controller.StartNewGame(cmbPlayerNameTextBox.Text.ToString(), 5);
+                Controller.StartNewGame(cmbPlayerNameTextBox.Text.ToString(), 3);
             }
             else if ((cmbRoundsAmount.SelectedIndex == 1) && (cmbPlayerNameTextBox.Text.ToString() != ""))
             {
-                Controller.StartNewGame(cmbPlayerNameTextBox.Text.ToString(), 6);
+                Controller.StartNewGame(cmbPlayerNameTextBox.Text.ToString(), 5);
+            }
+            else if ((cmbRoundsAmount.SelectedIndex == 2) && (cmbPlayerNameTextBox.Text.ToString() != ""))
+            {
+                Controller.StartNewGame(cmbPlayerNameTextBox.Text.ToString(), 10);
             }
 
             PopulateFieldsWithView();

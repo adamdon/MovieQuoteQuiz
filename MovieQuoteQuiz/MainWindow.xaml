@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:MovieQuoteQuiz"
         mc:Ignorable="d"
         
-        Title="Movie Quote Quiz" Height="452" Width="547">
+        Title="Movie Quote Quiz" Height="454" Width="546">
 
     <Window.Resources>
 
@@ -30,7 +30,7 @@
         <Label x:Name="lblTestLable1" Style = "{StaticResource myLabelStyleMedium}" Content="Welcome" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="367,10,17.333,0" VerticalAlignment="Top" Width="157"/>
         <Button x:Name="btnTestbutton" Content="Start!" HorizontalAlignment="Left" Margin="20,21,0,0" VerticalAlignment="Top" Width="125" Click="btnNewGamebutton_Click"/>
 
-        <Label x:Name="lblStatusBar" Content="" HorizontalAlignment="Left" Margin="19,395,0,0" VerticalAlignment="Top" Width="550"/>
+        <Label x:Name="lblStatusBar" Content="" HorizontalAlignment="Left" Margin="19,399,-29,-0.333" VerticalAlignment="Top" Width="550"/>
         <GroupBox x:Name="gruQuizGroupBox" Header="Quiz"  Height="170" Width="505" HorizontalAlignment="Left" Margin="19,64,0,0" VerticalAlignment="Top">
             <Grid  Height="140" Width="500" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" >
                 <Label x:Name="lblQuestionNumber" Style = "{StaticResource myLabelStyleMedium}" Content="Question 0" HorizontalAlignment="Left" Margin="3,34,0,0" VerticalAlignment="Top"/>
@@ -66,8 +66,9 @@
 
         </ComboBox>
         <ComboBox x:Name="cmbRoundsAmount" HorizontalAlignment="Left" Margin="275,22,0,0" VerticalAlignment="Top" Height="23" Width="92">
+            <ComboBoxItem>3 Rounds</ComboBoxItem>
             <ComboBoxItem IsSelected="True">5 Rounds</ComboBoxItem>
-            <ComboBoxItem>6 Rounds</ComboBoxItem>
+            <ComboBoxItem>10 Rounds</ComboBoxItem>
         </ComboBox>
 
     </Grid>

@@ -81,7 +81,7 @@ namespace MovieQuoteQuiz
         {
             intCorrectQuestions = intCorrectQuestions + 1;
             intTotalPoints = intTotalPoints + 10;
-            View.UpdateStatusBar(intTotalPoints, "Correct!");
+            //View.UpdateStatusBar(intTotalPoints, "Correct!");
             View.strlblTestLable1 = "Correct!";
         }
 
@@ -98,7 +98,7 @@ namespace MovieQuoteQuiz
             View.PopulateViewWithPlayer(plaCurrentPlayer);
 
             isGameInProgress = false;
-            View.UpdateStatusBar(intTotalPoints, "Game End!");
+            //View.UpdateStatusBar(intTotalPoints, "Game End!");
             View.strlblTestLable1 = ("End: " + intCorrectQuestions + "/" + intRoundsTotal);
             View.ActivateGameStateInView(isGameInProgress);
             View.SetupDefultValues();

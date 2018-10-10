@@ -22,6 +22,14 @@ namespace MovieQuoteQuiz
             intintTotalPointsAllGames = 0;
         }
 
+        public Player(string strUsernameP, int intTotalRoundsPlayedP, int intTotalCorrectQuestionsP, int intintTotalPointsAllGamesP)
+        {
+            strUsername = strUsernameP;
+            intTotalRoundsPlayed = intTotalRoundsPlayedP;
+            intTotalCorrectQuestions = intTotalCorrectQuestionsP;
+            intintTotalPointsAllGames = intintTotalPointsAllGamesP;
+        }
+
         public override string ToString()
         {
             return this.strUsername;
