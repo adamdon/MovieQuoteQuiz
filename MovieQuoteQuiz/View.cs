@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Media.Animation;
 
 namespace MovieQuoteQuiz
 {
@@ -10,7 +12,8 @@ namespace MovieQuoteQuiz
     {
         public static string strLblQuestioRoundText = "Question 0";
         public static string strLblCurrentQuestion = "Movie Quote";
-        public static string strlblStatusBar = "Status Bar";
+        public static string strlblStatusBar = "";
+        public static string strlblTestLable1 = "Welcome";
 
         public static string strlblCurrentRound = "0/0";
         public static string strlblCorrectAnswers = "0";
@@ -71,6 +74,17 @@ namespace MovieQuoteQuiz
             }
         }
 
+        public static DoubleAnimation AnimateLabel()
+        {
+            DoubleAnimation aniLableAnimation = new DoubleAnimation();
+            aniLableAnimation.From = 0;
+            aniLableAnimation.To = 1;
+            aniLableAnimation.AutoReverse = true;
+            aniLableAnimation.Duration = new Duration(TimeSpan.FromSeconds(1));
+
+            return aniLableAnimation;
+        }
+
         public static void ActivateGameStateInView(bool isGameInProgress)
         {
             if (isGameInProgress == true)
@@ -107,6 +121,7 @@ namespace MovieQuoteQuiz
         {
             strLblQuestioRoundText = "Question 0";
             strLblCurrentQuestion = "Movie Quote";
+            //strlblTestLable1 = "Welcome";
 
             strlblCurrentRound = "0/0";
             strlblCorrectAnswers = "0";

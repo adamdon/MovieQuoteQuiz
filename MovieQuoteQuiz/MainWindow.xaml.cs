@@ -68,6 +68,9 @@ namespace MovieQuoteQuiz
             lblCurrentQuestion.Content = View.strLblCurrentQuestion;
             lblStatusBar.Content = View.strlblStatusBar;
 
+            lblTestLable1.Content = View.strlblTestLable1;
+            lblTestLable1.BeginAnimation(Window.OpacityProperty, View.AnimateLabel());
+
             lblCurrentRound.Content = View.strlblCurrentRound;
             lblCorrectAnswers.Content = View.strlblCorrectAnswers;
             lblGamePoints.Content = View.strlblGamePoints;

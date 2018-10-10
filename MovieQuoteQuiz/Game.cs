@@ -43,6 +43,7 @@ namespace MovieQuoteQuiz
             View.PopulateViewWithScore(intRoundCurrent, intRoundsTotal, intCorrectQuestions, intTotalPoints);
 
             View.ActivateGameStateInView(isGameInProgress);
+            View.strlblTestLable1 = "Game Start"; 
 
         }
 
@@ -81,12 +82,13 @@ namespace MovieQuoteQuiz
             intCorrectQuestions = intCorrectQuestions + 1;
             intTotalPoints = intTotalPoints + 10;
             View.UpdateStatusBar(intTotalPoints, "Correct!");
+            View.strlblTestLable1 = "Correct!";
         }
 
         public void WrongAnswer()
         {
             intTotalPoints = intTotalPoints - 5;
-            View.UpdateStatusBar(intTotalPoints, "Wrong");
+            View.strlblTestLable1 = "Wrong";
         }
 
 
@@ -97,6 +99,7 @@ namespace MovieQuoteQuiz
 
             isGameInProgress = false;
             View.UpdateStatusBar(intTotalPoints, "Game End!");
+            View.strlblTestLable1 = ("End: " + intCorrectQuestions + "/" + intRoundsTotal);
             View.ActivateGameStateInView(isGameInProgress);
             View.SetupDefultValues();
         }

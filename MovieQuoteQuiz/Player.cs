@@ -50,11 +50,11 @@ namespace MovieQuoteQuiz
             {
                 if (plaPlayerIndex.strUsername == strPlayerNameTemp)
                 {
-                    View.UpdateStatusBarError("Player " + strPlayerNameTemp + " not new");
+                    //View.UpdateStatusBarError("Player " + strPlayerNameTemp + " not new");
                     return false;
                 }
             }
-            View.UpdateStatusBarError("Player " + strPlayerNameTemp + " added to db");
+            //View.UpdateStatusBarError("Player " + strPlayerNameTemp + " added to db");
             return true;
         }
 
@@ -64,7 +64,7 @@ namespace MovieQuoteQuiz
             {
                 if (plaPlayerIndex.strUsername == strPlayerNameTemp)
                 {
-                    View.UpdateStatusBarError("Player " + strPlayerNameTemp + " not new");
+                    //View.UpdateStatusBarError("Player " + strPlayerNameTemp + " not new");
                     return plaPlayerIndex;
                 }
             }
