@@ -93,7 +93,10 @@ namespace MovieQuoteQuiz
             plaPlayerToBeUpdated.intTotalRoundsPlayed = (plaPlayerToBeUpdated.intTotalRoundsPlayed + intRoundsTotal);
 
             int intIndexOfPlayerItem = GetPlayerIndexOfList(strPlayerName);
+
             Database.plaListOfPlayers[intIndexOfPlayerItem] = plaPlayerToBeUpdated; //to be removed when interface is in place
+            Interface.MakeSaveFile<Player>();
+            Interface.setSave<Player>(Database.plaListOfPlayers);
 
             return plaPlayerToBeUpdated;
         }
