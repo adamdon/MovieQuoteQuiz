@@ -8,17 +8,17 @@ namespace MovieQuoteQuiz
 {
     class Game
     {
-        public static List<Round> rouListOfRounds;
+        private static List<Round> rouListOfRounds;
 
-        public static string strPlayerName;
-        public static Player plaCurrentPlayer;
+        private static string strPlayerName;
+        private static Player plaCurrentPlayer;
 
-        public static int intRoundsTotal;
-        public static int intRoundCurrent;
-        public static int intCorrectQuestions;
-        public static int intTotalPoints;
+        private static int intRoundsTotal;
+        private static int intRoundCurrent;
+        private static int intCorrectQuestions;
+        private static int intTotalPoints;
 
-        public static bool isGameInProgress;
+        private static bool isGameInProgress;
 
         public Game(string strPlayerNameP, int intRoundsTotalP)
         {
