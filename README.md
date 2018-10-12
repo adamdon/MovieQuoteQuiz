@@ -1,6 +1,3 @@
-# 
-Multiple Choice Quiz using WPF
-
 # MovieQuoteQuiz
 ### Multiple Choice Quiz using WPF
 
